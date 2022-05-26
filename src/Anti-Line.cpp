@@ -63,6 +63,7 @@ LRESULT CALLBACK windowProcedure(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lpar
         {
             RECT* screen = (RECT*)lparam;
             Pos::update(screen->right - screen->left, screen->bottom - screen->top);
+            //repaint on update
             InvalidateRect(hwnd, 0, TRUE);
             break;
         }

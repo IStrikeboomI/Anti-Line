@@ -28,7 +28,6 @@ Pos::Pos(int x, int y, int width, int height) : x(x), y(y), width(width), height
 
 void Pos::setX(int x) {
 	this->x = x;
-	std::cout << this->x << "\n";
 	update();
 }
 
