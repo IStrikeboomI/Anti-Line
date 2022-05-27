@@ -59,10 +59,11 @@ LRESULT CALLBACK windowProcedure(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lpar
             PostQuitMessage(0);
             break;
 		}
-        case WM_SIZING:
+        case WM_SIZE:
         {
-            RECT* screen = (RECT*)lparam;
-            Pos::update(screen->right - screen->left, screen->bottom - screen->top);
+            int width = LOWORD(lparam);
+            int height = HIWORD(lparam);
+            Pos::update(width, height);
             //repaint on update
             InvalidateRect(hwnd, 0, TRUE);
             break;
