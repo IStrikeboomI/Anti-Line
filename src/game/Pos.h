@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <iostream>
 class Pos {
 private:
 	static std::vector<Pos*> instances;
@@ -22,5 +23,7 @@ public:
 	void setY(int Y);
 	void setWidth(int width);
 	void setHeight(int height);
+
+	friend std::ostream& operator<<(std::ostream& os, const Pos& pos);
 };
 

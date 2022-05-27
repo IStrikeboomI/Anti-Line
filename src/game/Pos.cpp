@@ -1,5 +1,4 @@
 #include "Pos.h"
-#include <iostream>
 int Pos::screenHeight = 540;
 int Pos::screenWidth = 960;
 std::vector<Pos*> Pos::instances;
@@ -44,4 +43,18 @@ void Pos::setWidth(int width) {
 void Pos::setHeight(int height) {
 	this->height = height;
 	update();
+}
+
+std::ostream& operator<<(std::ostream& os, const Pos& pos) {
+	os << "Pos["
+		<< "x = " << pos.x
+		<< ", y = " << pos.y
+		<< ", width = " << pos.width
+		<< ", height = " << pos.height
+		<< ", scaledX = " << pos.scaledX
+		<< ", scaledY = " << pos.scaledY
+		<< ", scaledWidth = " << pos.scaledWidth
+		<< ", scaledHeight = " << pos.scaledHeight
+		<< "]";
+	return os;
 }
