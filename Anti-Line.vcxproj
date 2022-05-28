@@ -142,11 +142,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\game\Round.cpp" />
     <ClCompile Include="src\game\Pos.cpp" />
     <ClCompile Include="src\Anti-Line.cpp" />
     <ClCompile Include="src\game\points\StartPoint.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\GameData.h" />
+    <ClInclude Include="src\game\Round.h" />
     <ClInclude Include="src\game\Pos.h" />
     <ClInclude Include="src\game\points\StartPoint.h" />
     <ClInclude Include="src\Util.h" />
