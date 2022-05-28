@@ -14,6 +14,7 @@ public:
 	//this one should be the one used for drawing
 	int scaledX = 0, scaledY = 0, scaledWidth = 0, scaledHeight = 0;
 
+	//unscaled version
 	Pos(int x, int y, int width = 0, int height = 0);
 	//called when resizing
 	static void update(int width = screenWidth, int height = screenHeight);
