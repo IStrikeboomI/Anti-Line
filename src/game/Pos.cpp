@@ -58,3 +58,18 @@ std::ostream& operator<<(std::ostream& os, const Pos& pos) {
 		<< "]";
 	return os;
 }
+
+bool operator==(const Pos& pos1, const Pos& pos2) {
+	return pos1.x == pos2.x
+		&& pos1.y == pos2.y
+		&& pos1.width == pos2.width
+		&& pos1.height == pos2.height;
+}
+
+bool operator!=(const Pos& pos1, const Pos& pos2) {
+	return pos1.x != pos2.x
+		&& pos1.y != pos2.y
+		&& pos1.width != pos2.width
+		&& pos1.height != pos2.height;
+}
+

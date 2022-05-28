@@ -26,5 +26,7 @@ public:
 	void setHeight(int height);
 
 	friend std::ostream& operator<<(std::ostream& os, const Pos& pos);
+	friend bool operator==(const Pos& pos1, const Pos& pos2);
+	friend bool operator!=(const Pos& pos1, const Pos& pos2);
 };
 
