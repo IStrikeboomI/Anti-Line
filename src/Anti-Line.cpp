@@ -3,13 +3,14 @@
 #include <string>
 #include <iostream>
 #include "game/points/StartPoint.h"
+#include "GameData.h"
 
-namespace GameData {
-    StartPoint startPoint;
-    static const int STARTING_WIDTH = 960, STARTING_HEIGHT = 540;
-}
+static const int STARTING_WIDTH = 960, STARTING_HEIGHT = 540;
 
 LRESULT CALLBACK windowProcedure(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam);
+//These methods are used for drawing separate objects to not clutter the WM_PAINT call
+void drawScoreString(Gdiplus::Graphics& graphics);
+void drawStartAndEndPoints(Gdiplus::Graphics& graphics);
 
 int main() {
     //Initilzing Gdi+
@@ -37,7 +38,7 @@ int main() {
     GetWindowRect(GetDesktopWindow(), &screen);
 
     //Creates Window
-    CreateWindowW(wc.lpszClassName, wc.lpszMenuName, WS_OVERLAPPEDWINDOW | WS_VISIBLE, screen.right / 2 - GameData::STARTING_WIDTH / 2, screen.bottom / 2 - GameData::STARTING_HEIGHT / 2, GameData::STARTING_WIDTH, GameData::STARTING_HEIGHT, nullptr, nullptr, wc.hInstance, nullptr);
+    CreateWindowW(wc.lpszClassName, wc.lpszMenuName, WS_OVERLAPPEDWINDOW | WS_VISIBLE, screen.right / 2 - STARTING_WIDTH / 2, screen.bottom / 2 - STARTING_HEIGHT / 2, STARTING_WIDTH, STARTING_HEIGHT, nullptr, nullptr, wc.hInstance, nullptr);
 
     MSG msg = { nullptr };
 
@@ -76,14 +77,31 @@ LRESULT CALLBACK windowProcedure(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lpar
 
             //make graphics
             Gdiplus::Graphics graphics(hdc);
-            
-            //Used for drawing starting point
-            Gdiplus::SolidBrush startingPointBrush(Gdiplus::Color(0,255,0));
-            graphics.FillRectangle(&startingPointBrush,GameData::startPoint.pos.scaledX, GameData::startPoint.pos.scaledY, GameData::startPoint.pos.scaledWidth, GameData::startPoint.pos.scaledHeight);
+
+            drawScoreString(graphics);
+            drawStartAndEndPoints(graphics);
+
             //stop painting
             EndPaint(hwnd, &ps);
         }
         default:break;
     }
     return DefWindowProcW(hwnd, msg, wparam, lparam);
+}
+
+void drawScoreString(Gdiplus::Graphics& graphics) {
+    std::wstring scoreString(L"Score: ");
+    scoreString += std::to_wstring(GameData::currentRound.getScore());
+
+    Gdiplus::FontFamily fontFamily(L"Arial");
+    Gdiplus::Font font(&fontFamily, 48);
+    Gdiplus::SolidBrush scoreBrush(Gdiplus::Color(132, 135, 135));
+
+    graphics.DrawString(scoreString.c_str(),-1,&font,Gdiplus::PointF(0,0),&scoreBrush);
+}
+
+void drawStartAndEndPoints(Gdiplus::Graphics& graphics) {
+    Gdiplus::SolidBrush startingPointBrush(Gdiplus::Color(0, 255, 0));
+    graphics.FillRectangle(&startingPointBrush, GameData::currentRound.startPoint.pos.scaledX, GameData::currentRound.startPoint.pos.scaledY, 
+                                                GameData::currentRound.startPoint.pos.scaledWidth, GameData::currentRound.startPoint.pos.scaledHeight);
 }
