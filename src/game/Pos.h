@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <iostream>
+//This class is used for positioning
 class Pos {
 private:
 	static std::vector<Pos*> instances;
@@ -18,6 +19,9 @@ public:
 	Pos(int x, int y, int width = 0, int height = 0);
 	//called when resizing
 	static void update(int width = screenWidth, int height = screenHeight);
+	//used for removing all the Pos in the vector
+	//used during round changes
+	static void clearInstances();
 	//separate functions so we can update after setting
 	//sets real coordinates but also does scale
 	void setX(int x);

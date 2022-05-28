@@ -20,6 +20,10 @@ void Pos::update(int width, int height) {
 	}
 }
 
+void Pos::clearInstances() {
+	instances.clear();
+}
+
 Pos::Pos(int x, int y, int width, int height) : x(x), y(y), width(width), height(height),
 												scaledX(x), scaledY(y),scaledWidth(width),scaledHeight(height) {
 	instances.push_back(this);
