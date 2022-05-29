@@ -9,6 +9,7 @@ static const int STARTING_WIDTH = 960, STARTING_HEIGHT = 540;
 
 LRESULT CALLBACK windowProcedure(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam);
 //These methods are used for drawing separate objects to not clutter the WM_PAINT call
+//TODO Make text scale with resizeing
 void drawScoreString(Gdiplus::Graphics& graphics);
 void drawStartAndEndPoints(Gdiplus::Graphics& graphics);
 
@@ -104,4 +105,8 @@ void drawStartAndEndPoints(Gdiplus::Graphics& graphics) {
     Gdiplus::SolidBrush startingPointBrush(Gdiplus::Color(0, 255, 0));
     graphics.FillRectangle(&startingPointBrush, GameData::currentRound.startPoint.pos.scaledX, GameData::currentRound.startPoint.pos.scaledY, 
                                                 GameData::currentRound.startPoint.pos.scaledWidth, GameData::currentRound.startPoint.pos.scaledHeight);
+
+    Gdiplus::SolidBrush endingPointBrush(Gdiplus::Color(255, 0, 0));
+    graphics.FillRectangle(&endingPointBrush, GameData::currentRound.endPoint.pos.scaledX, GameData::currentRound.endPoint.pos.scaledY,
+                           GameData::currentRound.endPoint.pos.scaledWidth, GameData::currentRound.endPoint.pos.scaledHeight);
 }
