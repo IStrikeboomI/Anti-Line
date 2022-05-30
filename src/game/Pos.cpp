@@ -90,3 +90,23 @@ bool operator!=(const Pos& pos1, const Pos& pos2) {
 		&& pos1.height != pos2.height;
 }
 
+Pos operator+(const Pos& pos1, const Pos& pos2) {
+	return Pos(pos1.x + pos2.x, pos1.y + pos2.y);
+}
+
+Pos operator-(const Pos& pos1, const Pos& pos2) {
+	return Pos(pos1.x - pos2.x, pos1.y - pos2.y);
+}
+
+
+Pos& Pos::operator+=(const Pos& pos) {
+	x += pos.x;
+	y += pos.y;
+	return *this;
+}
+
+Pos& Pos::operator-=(const Pos& pos) {
+	x -= pos.x;
+	y += pos.y;
+	return *this;
+}

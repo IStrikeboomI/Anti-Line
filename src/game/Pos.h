@@ -38,5 +38,13 @@ public:
 	friend std::ostream& operator<<(std::ostream& os, const Pos& pos);
 	friend bool operator==(const Pos& pos1, const Pos& pos2);
 	friend bool operator!=(const Pos& pos1, const Pos& pos2);
+
+	//Note: these operator overloads DO NOT effect the height and width (it will only use the Pos1 if two Pos are provided)
+	//Adds 2 positions together
+	friend Pos operator+(const Pos& pos1, const Pos& pos2);
+	//Subtracts 2 positions together
+	friend Pos operator-(const Pos& pos1, const Pos& pos2);
+	Pos& operator+=(const Pos& pos2);
+	Pos& operator-=(const Pos& pos2);
 };
 
