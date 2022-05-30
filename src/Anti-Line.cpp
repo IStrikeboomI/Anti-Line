@@ -94,11 +94,10 @@ void drawScoreString(Gdiplus::Graphics& graphics) {
     std::wstring scoreString(L"Score: ");
     scoreString += std::to_wstring(GameData::currentRound.getScore());
 
-    Gdiplus::FontFamily fontFamily(L"Arial");
-    Gdiplus::Font font(&fontFamily, 48);
+    Gdiplus::Font font(L"Arial", 48);
     Gdiplus::SolidBrush scoreBrush(Gdiplus::Color(132, 135, 135));
 
-    graphics.DrawString(scoreString.c_str(),-1,&font,Gdiplus::PointF(0,0),&scoreBrush);
+    graphics.DrawString(scoreString.c_str(), -1, &font, Gdiplus::PointF(0, 0), &scoreBrush);
 }
 
 void drawStartAndEndPoints(Gdiplus::Graphics& graphics) {
