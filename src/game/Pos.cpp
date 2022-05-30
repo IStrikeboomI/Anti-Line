@@ -4,8 +4,12 @@ int Pos::screenWidth = 960;
 std::vector<Pos*> Pos::instances;
 
 void Pos::update(int width, int height) {
-	screenWidth = width;
-	screenHeight = height;
+	if (width >= 0 && height >= 0) {
+		screenWidth = width;
+		screenHeight = height;
+	} else {
+		throw std::invalid_argument("Width nor height cannot be less than or equal to 0");
+	}
 
 	//These two floats are used for scaling the pos
 	//a scale factor of 1 is for a 960x540 window
@@ -18,6 +22,10 @@ void Pos::update(int width, int height) {
 		p->scaledWidth = p->width * scaleFactorX;
 		p->scaledHeight = p->height * scaleFactorY;
 	}
+}
+
+int Pos::scaledFontSize(int size) {
+	return 0;
 }
 
 void Pos::clearInstances() {
