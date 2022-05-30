@@ -1,6 +1,7 @@
 #include "Round.h"
 
-Round::Round() : startPoint()  {
+Round::Round() : startPoint(),endPoint() {
+	
 }
 
 int Round::getScore() {
