@@ -1,12 +1,16 @@
 #pragma once
 #include <vector>
 #include <iostream>
+#include <stdexcept>
 //This class is used for positioning
 class Pos {
 private:
 	static std::vector<Pos*> instances;
 	//used for scaling the dimensions
 	static int screenWidth, screenHeight;
+	//These two floats are used for scaling the pos
+	//a scale factor of 1 on each is for a 960x540 window
+	static float scaleFactorX, scaleFactorY;
 	//"real" coordinates
 	//this one should be used for moving around
 	int x = 0, y = 0, width = 0, height = 0;
@@ -19,6 +23,8 @@ public:
 	Pos(int x, int y, int width = 0, int height = 0);
 	//called when resizing
 	static void update(int width = screenWidth, int height = screenHeight);
+	//helper function used to scale font size
+	static int scaledFontSize(int size);
 	//used for removing all the Pos in the vector
 	//used during round changes
 	static void clearInstances();
