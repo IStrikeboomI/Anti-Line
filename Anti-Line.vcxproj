@@ -142,6 +142,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\game\Player.cpp" />
     <ClCompile Include="src\game\points\EndPoint.cpp" />
     <ClCompile Include="src\game\Round.cpp" />
     <ClCompile Include="src\game\Pos.cpp" />
@@ -149,6 +150,7 @@
     <ClCompile Include="src\game\points\StartPoint.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\game\Player.h" />
     <ClInclude Include="src\game\points\EndPoint.h" />
     <ClInclude Include="src\GameData.h" />
     <ClInclude Include="src\game\Round.h" />

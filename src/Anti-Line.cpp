@@ -92,8 +92,7 @@ LRESULT CALLBACK windowProcedure(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lpar
 
 void drawScoreString(Gdiplus::Graphics& graphics) {
     std::wstring scoreString(L"Score: ");
-    scoreString += std::to_wstring(GameData::currentRound.getScore());
-
+    scoreString += std::to_wstring(GameData::score);
     Gdiplus::Font font(L"Arial", Pos::scaledFontSize(48));
     Gdiplus::SolidBrush scoreBrush(Gdiplus::Color(132, 135, 135));
 
