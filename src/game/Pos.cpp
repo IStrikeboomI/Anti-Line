@@ -29,7 +29,7 @@ void Pos::update(int width, int height) {
 
 int Pos::scaledFontSize(int size) {
 	//take average of the scale factors to use on the font size
-	float fontScaleFactor = (scaleFactorX + scaleFactorY) / 2.0;
+	float fontScaleFactor = (scaleFactorX + scaleFactorY) / 2.0f;
 	return size * fontScaleFactor;
 }
 
@@ -107,6 +107,6 @@ Pos& Pos::operator+=(const Pos& pos) {
 
 Pos& Pos::operator-=(const Pos& pos) {
 	x -= pos.x;
-	y += pos.y;
+	y -= pos.y;
 	return *this;
 }
