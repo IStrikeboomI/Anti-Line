@@ -79,12 +79,15 @@ LRESULT CALLBACK windowProcedure(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lpar
             //make graphics
             Gdiplus::Graphics graphics(hdc);
 
-            drawScoreString(graphics);
-            drawStartAndEndPoints(graphics);
+            if (GameData::inRound) {
+                drawScoreString(graphics);
+                drawStartAndEndPoints(graphics);
+            }
 
             //stop painting
             EndPaint(hwnd, &ps);
         }
+
         default:break;
     }
     return DefWindowProcW(hwnd, msg, wparam, lparam);
