@@ -62,6 +62,22 @@ void Pos::setHeight(int height) {
 	update();
 }
 
+int Pos::getX() const {
+	return x;
+}
+
+int Pos::getY() const {
+	return y;
+}
+
+int Pos::getWidth() const {
+	return width;
+}
+
+int Pos::getHeight() const {
+	return height;
+}
+
 std::ostream& operator<<(std::ostream& os, const Pos& pos) {
 	os << "Pos["
 		<< "x = " << pos.x

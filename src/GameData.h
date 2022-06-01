@@ -4,5 +4,5 @@ namespace GameData {
 	Round currentRound;
 	int score = 0;
 	bool AIMode = false;
-	bool inRound;
+	bool inRound = true;
 }

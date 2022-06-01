@@ -34,6 +34,10 @@ public:
 	void setY(int Y);
 	void setWidth(int width);
 	void setHeight(int height);
+	int getX() const;
+	int getY() const;
+	int getWidth() const;
+	int getHeight() const;
 
 	friend std::ostream& operator<<(std::ostream& os, const Pos& pos);
 	friend bool operator==(const Pos& pos1, const Pos& pos2);

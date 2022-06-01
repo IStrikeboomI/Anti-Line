@@ -9,9 +9,9 @@ static const int STARTING_WIDTH = 960, STARTING_HEIGHT = 540;
 
 LRESULT CALLBACK windowProcedure(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam);
 //These methods are used for drawing separate objects to not clutter the WM_PAINT call
-//TODO Make text scale with resizeing
 void drawScoreString(Gdiplus::Graphics& graphics);
 void drawStartAndEndPoints(Gdiplus::Graphics& graphics);
+void drawPlayer(Gdiplus::Graphics& graphics);
 
 int main() {
     //Initilzing Gdi+
@@ -82,12 +82,17 @@ LRESULT CALLBACK windowProcedure(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lpar
             if (GameData::inRound) {
                 drawScoreString(graphics);
                 drawStartAndEndPoints(graphics);
+                drawPlayer(graphics);
             }
 
             //stop painting
             EndPaint(hwnd, &ps);
         }
-
+        case WM_KEYDOWN:
+        {
+            GameData::currentRound.player.handleKeyboardInput(wparam);
+            break;
+        }
         default:break;
     }
     return DefWindowProcW(hwnd, msg, wparam, lparam);
@@ -109,5 +114,12 @@ void drawStartAndEndPoints(Gdiplus::Graphics& graphics) {
 
     Gdiplus::SolidBrush endingPointBrush(Gdiplus::Color(255, 0, 0));
     graphics.FillRectangle(&endingPointBrush, GameData::currentRound.endPoint.pos.scaledX, GameData::currentRound.endPoint.pos.scaledY,
-                           GameData::currentRound.endPoint.pos.scaledWidth, GameData::currentRound.endPoint.pos.scaledHeight);
+                                              GameData::currentRound.endPoint.pos.scaledWidth, GameData::currentRound.endPoint.pos.scaledHeight);
+}
+
+void drawPlayer(Gdiplus::Graphics& graphics) {
+    Gdiplus::SolidBrush playerBrush(Gdiplus::Color(52, 103, 207));
+    graphics.FillRectangle(&playerBrush, GameData::currentRound.player.pos.scaledX, GameData::currentRound.player.pos.scaledY,
+                                         GameData::currentRound.player.pos.scaledWidth, GameData::currentRound.player.pos.scaledHeight);
+
 }
