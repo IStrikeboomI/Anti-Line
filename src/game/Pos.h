@@ -15,6 +15,7 @@ private:
 	//this one should be used for moving around
 	int x = 0, y = 0, width = 0, height = 0;
 public:
+	const static int MAX_WIDTH = 960, MAX_HEIGHT = 540;
 	//scaled version of the coordinates
 	//this one should be the one used for drawing
 	int scaledX = 0, scaledY = 0, scaledWidth = 0, scaledHeight = 0;

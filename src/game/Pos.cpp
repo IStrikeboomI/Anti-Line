@@ -43,11 +43,25 @@ Pos::Pos(int x, int y, int width, int height) : x(x), y(y), width(width), height
 }
 
 void Pos::setX(int x) {
+	//these two if statements make sure they're in bounds
+	if (x < 0) {
+		x = 0;
+	}
+	if (x > MAX_WIDTH - width) {
+		x = MAX_WIDTH - width;
+	}
 	this->x = x;
 	update();
 }
 
 void Pos::setY(int y) {
+	//these two if statements make sure they're in bounds
+	if (y < 0) {
+		y = 0;
+	}
+	if (y > MAX_HEIGHT - height) {
+		y = MAX_HEIGHT - height;
+	}
 	this->y = y;
 	update();
 }
