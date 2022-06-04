@@ -155,7 +155,7 @@ LRESULT CALLBACK windowProcedure(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lpar
                 }
                 //right arrow OR D key
                 if (GetAsyncKeyState(VK_RIGHT) & 0x8000 || GetAsyncKeyState(0x44) & 0x8000) {
-                    GameData::currentRound.player.moveRight();
+                    GameData::currentRound.player.moveRight(); 
                 }
             }
             break;
@@ -175,17 +175,17 @@ inline void drawScoreString(Gdiplus::Graphics& graphics) {
 }
 
 inline void drawStartAndEndPoints(Gdiplus::Graphics& graphics) {
-    Gdiplus::SolidBrush startingPointBrush(Gdiplus::Color(0, 255, 0));
+    Gdiplus::SolidBrush startingPointBrush(GameData::currentRound.startPoint.getColor());
     graphics.FillRectangle(&startingPointBrush, GameData::currentRound.startPoint.pos.scaledX, GameData::currentRound.startPoint.pos.scaledY, 
                                                 GameData::currentRound.startPoint.pos.scaledWidth, GameData::currentRound.startPoint.pos.scaledHeight);
 
-    Gdiplus::SolidBrush endingPointBrush(Gdiplus::Color(255, 0, 0));
+    Gdiplus::SolidBrush endingPointBrush(GameData::currentRound.endPoint.getColor());
     graphics.FillRectangle(&endingPointBrush, GameData::currentRound.endPoint.pos.scaledX, GameData::currentRound.endPoint.pos.scaledY,
                                               GameData::currentRound.endPoint.pos.scaledWidth, GameData::currentRound.endPoint.pos.scaledHeight);
 }
 
 inline void drawPlayer(Gdiplus::Graphics& graphics) {
-    Gdiplus::SolidBrush playerBrush(Gdiplus::Color(52, 103, 207));
+    Gdiplus::SolidBrush playerBrush(GameData::currentRound.player.getColor());
     graphics.FillRectangle(&playerBrush, GameData::currentRound.player.pos.scaledX, GameData::currentRound.player.pos.scaledY,
                                          GameData::currentRound.player.pos.scaledWidth, GameData::currentRound.player.pos.scaledHeight);
     

@@ -19,3 +19,8 @@ void Player::moveRight(int distance) {
 	pos.setX(pos.getX() + distance);
 }
 
+Gdiplus::Color Player::getColor() const {
+	return Gdiplus::Color(argb);
+}
+
+
