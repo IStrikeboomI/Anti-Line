@@ -1,9 +1,9 @@
 #pragma once
 #include "../Util.h"
 #include "Pos.h"
-#include "../Paintable.h"
+#include "../IPaintable.h"
 #include "../Util.h"
-class Player : public Paintable{
+class Player : public IPaintable{
 private:
 	//holds the alpha and rgb for the player color
 	//the way it works is by generating a random RGB value which is between 0 and 16777216 (FFFFFF in hex)

@@ -2,8 +2,8 @@
 #include <random>
 #include "../Pos.h"
 #include "../../Util.h"
-#include "../../Paintable.h"
-class EndPoint : public Paintable{
+#include "../../IPaintable.h"
+class EndPoint : public IPaintable{
 public:
 	const static int SIDE_LENGTH = 50;
 	Pos pos;

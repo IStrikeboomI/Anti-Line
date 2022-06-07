@@ -56,7 +56,7 @@
     <ClInclude Include="src\game\Player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Paintable.h">
+    <ClInclude Include="src\IPaintable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
