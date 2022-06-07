@@ -157,6 +157,7 @@
     <ClInclude Include="src\game\Pos.h" />
     <ClInclude Include="src\game\points\StartPoint.h" />
     <ClInclude Include="src\IPaintable.h" />
+    <ClInclude Include="src\ITickable.h" />
     <ClInclude Include="src\Util.h" />
   </ItemGroup>
   <ItemGroup>

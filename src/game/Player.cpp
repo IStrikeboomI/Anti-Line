@@ -5,28 +5,28 @@ Player::Player() : pos(0,0,SIDE_LENGTH, SIDE_LENGTH) {
 
 //when moving up we need to lower the velocity
 void Player::moveUp() {
-	yAxisAcceleration += .2;
+	yAxisAcceleration += ACCELERATION_INCREASE_AMOUNT;
 	yAxisVelocity -= yAxisAcceleration;
 }
 //when moving down we need to increse the velocity
 void Player::moveDown() {
-	yAxisAcceleration += .2;
+	yAxisAcceleration += ACCELERATION_INCREASE_AMOUNT;
 	yAxisVelocity += yAxisAcceleration;
 }
 //when moving left we need to lower the velocity
 void Player::moveLeft() {
-	xAxisAcceleration += .2;
+	xAxisAcceleration += ACCELERATION_INCREASE_AMOUNT;
 	xAxisVelocity -= xAxisAcceleration;
 }
 //when moving right we need to increse the velocity
 void Player::moveRight() {
-	xAxisAcceleration += .2;
+	xAxisAcceleration += ACCELERATION_INCREASE_AMOUNT;
 	xAxisVelocity += xAxisAcceleration;
 }
 
 //called every tick
 //used for movement, both X and Y axis are the same thing, just different variables
-void Player::idle() {
+void Player::update() {
 	//since acceleration gets added every time we move, we need to cap it
 	if (yAxisAcceleration > MAX_ACCELERATION) {
 		yAxisAcceleration = MAX_ACCELERATION;
@@ -51,7 +51,7 @@ void Player::idle() {
 	//using abs for the same reason as above
 	if (std::abs(yAxisVelocity) > 0) {
 		//using signum to account for the abs
-		yAxisVelocity -= Util::signum(yAxisVelocity) * .1;
+		yAxisVelocity -= Util::signum(yAxisVelocity) * ACCELERATION_INCREASE_AMOUNT / 4;
 		//due to floating point errors we need to round down to 0 when its below .1
 		if (std::abs(yAxisVelocity) <= 0.1) {
 			yAxisVelocity = 0;
@@ -84,7 +84,7 @@ void Player::idle() {
 	//using abs for the same reason as above
 	if (std::abs(xAxisVelocity) > 0) {
 		//using signum to account for the abs
-		xAxisVelocity -= Util::signum(xAxisVelocity) * .1;
+		xAxisVelocity -= Util::signum(xAxisVelocity) * ACCELERATION_INCREASE_AMOUNT / 4;
 		//due to floating point errors we need to round down to 0 when its below .1
 		if (std::abs(xAxisVelocity) <= 0.1) {
 			xAxisVelocity = 0;
