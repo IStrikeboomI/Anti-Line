@@ -72,6 +72,7 @@ LRESULT CALLBACK windowProcedure(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lpar
                 //happens every 33 ms
                 case MOVING_REDRAW_TIMER:
                 {
+                    GameData::currentRound.player.idle();
                     //redraw window
                     InvalidateRect(hwnd, nullptr, true);
                     break;
@@ -134,7 +135,8 @@ LRESULT CALLBACK windowProcedure(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lpar
             //stop painting
             EndPaint(hwnd, &ps);
         }
-        case WM_KEYDOWN:
+        //WM_KEYUP instead of WM_KEYDOWN so it doesn't get faster when holding down after a few ticks
+        case WM_KEYUP:
         {
             //only detect key inputs if in a round
             if (GameData::inRound) {
