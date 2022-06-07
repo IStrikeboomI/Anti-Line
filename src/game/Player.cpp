@@ -31,12 +31,18 @@ void Player::idle() {
 	}
 	if (yAxisAcceleration >= 0.1) {
 		yAxisAcceleration -= .1;
+		if (yAxisAcceleration <= 0.1) {
+			yAxisAcceleration = 0;
+		}
 	}
 	if (std::abs(yAxisVelocity) > MAX_VELOCITY) {
 		yAxisVelocity = Util::signum(yAxisVelocity) * MAX_VELOCITY;
 	}
 	if (std::abs(yAxisVelocity) > 0) {
 		yAxisVelocity -= Util::signum(yAxisVelocity) * .1;
+		if (std::abs(yAxisVelocity) <= 0.1) {
+			yAxisVelocity = 0;
+		}
 	}
 	pos.setY(pos.getY() + yAxisVelocity);
 	std::cout << yAxisAcceleration << "\n" << yAxisVelocity << "\n\n";
