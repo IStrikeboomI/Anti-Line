@@ -1,5 +1,5 @@
 #pragma once
-#include <cmath>
+#include "../Util.h"
 #include "Pos.h"
 #include "../Paintable.h"
 #include "../Util.h"
@@ -11,7 +11,7 @@ private:
 	//then it uses "| 0xFF000000" to set the alpha of it to max because argb holds alpha first
 	int argb = Util::random(0, 0xFFFFFF) | 0xFF000000;
 	float xAxisAcceleration = 0, xAxisvelocity = 0, yAxisAcceleration = 0, yAxisVelocity = 0;
-	const float MAX_ACCELERATION = 5, MAX_VELOCITY = 10;
+	const float MAX_ACCELERATION = 2, MAX_VELOCITY = 5;
 	Direction direction = Direction::UP;
 public:
 	const static int SIDE_LENGTH = 30;
