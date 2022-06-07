@@ -5,8 +5,8 @@
 #include "game/points/StartPoint.h"
 #include "GameData.h"
 
-//constant for timer
-static const int MOVING_REDRAW_TIMER = 12;
+//constant for timer's code
+static const int UPDATE_TIMER = 12;
 
 static const int STARTING_WIDTH = 960, STARTING_HEIGHT = 540;
 
@@ -45,7 +45,7 @@ int main() {
     HWND hwnd = CreateWindowW(wc.lpszClassName, wc.lpszMenuName, WS_OVERLAPPEDWINDOW | WS_VISIBLE, screen.right / 2 - STARTING_WIDTH / 2, screen.bottom / 2 - STARTING_HEIGHT / 2, STARTING_WIDTH, STARTING_HEIGHT, nullptr, nullptr, wc.hInstance, nullptr);
 
     //Set a timer to redraw every 33 ms (30 fps) to handle the player moving
-    SetTimer(hwnd, MOVING_REDRAW_TIMER, 33, (TIMERPROC)NULL);
+    SetTimer(hwnd, UPDATE_TIMER, 33, (TIMERPROC)NULL);
 
     MSG msg = { nullptr };
 
@@ -70,9 +70,10 @@ LRESULT CALLBACK windowProcedure(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lpar
         {
             switch (wparam) {
                 //happens every 33 ms
-                case MOVING_REDRAW_TIMER:
+                case UPDATE_TIMER:
                 {
-                    GameData::currentRound.player.idle();
+                    //update the round
+                    GameData::currentRound.update();
                     //redraw window
                     InvalidateRect(hwnd, nullptr, true);
                     break;
