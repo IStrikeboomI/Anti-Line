@@ -4,11 +4,10 @@
 #include <iostream>
 #include "game/points/StartPoint.h"
 #include "GameData.h"
+#include "game/Pos.h"
 
 //constant for timer's code
 static const int UPDATE_TIMER = 12;
-
-static const int STARTING_WIDTH = 960, STARTING_HEIGHT = 540;
 
 LRESULT CALLBACK windowProcedure(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam);
 //These methods are used for drawing separate objects to not clutter the WM_PAINT call
@@ -42,7 +41,7 @@ int main() {
     GetWindowRect(GetDesktopWindow(), &screen);
 
     //Creates Window
-    HWND hwnd = CreateWindowW(wc.lpszClassName, wc.lpszMenuName, WS_OVERLAPPEDWINDOW | WS_VISIBLE, screen.right / 2 - STARTING_WIDTH / 2, screen.bottom / 2 - STARTING_HEIGHT / 2, STARTING_WIDTH, STARTING_HEIGHT, nullptr, nullptr, wc.hInstance, nullptr);
+    HWND hwnd = CreateWindowW(wc.lpszClassName, wc.lpszMenuName, WS_OVERLAPPEDWINDOW | WS_VISIBLE, screen.right / 2 - Pos::BASE_WIDTH / 2, screen.bottom / 2 - Pos::BASE_HEIGHT / 2, Pos::BASE_WIDTH, Pos::BASE_HEIGHT, nullptr, nullptr, wc.hInstance, nullptr);
 
     //Set a timer to redraw every 33 ms (30 fps) to handle the player moving
     SetTimer(hwnd, UPDATE_TIMER, 33, (TIMERPROC)NULL);

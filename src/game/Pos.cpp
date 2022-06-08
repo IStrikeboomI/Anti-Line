@@ -1,8 +1,8 @@
 #include "Pos.h"
-int Pos::screenHeight = 540;
-int Pos::screenWidth = 960;
-float Pos::scaleFactorX = (float)screenWidth / 960;
-float Pos::scaleFactorY = (float)screenHeight / 540;
+int Pos::screenWidth = BASE_WIDTH;
+int Pos::screenHeight = BASE_HEIGHT;
+float Pos::scaleFactorX = (float)screenWidth / BASE_WIDTH;
+float Pos::scaleFactorY = (float)screenHeight / BASE_HEIGHT;
 std::vector<Pos*> Pos::instances;
 
 void Pos::update(int width, int height) {
@@ -11,8 +11,8 @@ void Pos::update(int width, int height) {
 		//set all the values
 		screenWidth = width;
 		screenHeight = height;
-		scaleFactorX = (float)screenWidth / 960;
-		scaleFactorY = (float)screenHeight / 540;
+		scaleFactorX = (float)screenWidth / BASE_WIDTH;
+		scaleFactorY = (float)screenHeight / BASE_HEIGHT;
 	} else {
 		//throw an error if update is called using a negative parameter
 		throw std::invalid_argument("Width nor height cannot be less than or equal to 0");
@@ -47,8 +47,8 @@ void Pos::setX(int x) {
 	if (x < 0) {
 		x = 0;
 	}
-	if (x > MAX_WIDTH - width) {
-		x = MAX_WIDTH - width;
+	if (x > BASE_WIDTH - width) {
+		x = BASE_WIDTH - width;
 	}
 	this->x = x;
 	update();
@@ -59,8 +59,8 @@ void Pos::setY(int y) {
 	if (y < 0) {
 		y = 0;
 	}
-	if (y > MAX_HEIGHT - height) {
-		y = MAX_HEIGHT - height;
+	if (y > BASE_HEIGHT - height) {
+		y = BASE_HEIGHT - height;
 	}
 	this->y = y;
 	update();
