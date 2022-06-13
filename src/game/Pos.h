@@ -25,7 +25,7 @@ public:
 	//called when resizing
 	static void update(int width = screenWidth, int height = screenHeight);
 	//helper function used to scale font size
-	static int scaledFontSize(int size);
+	static float scaledFontSize(int size);
 	//used for removing all the Pos in the vector
 	//used during round changes
 	static void clearInstances();

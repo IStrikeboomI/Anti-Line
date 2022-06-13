@@ -27,7 +27,7 @@ void Pos::update(int width, int height) {
 	}
 }
 
-int Pos::scaledFontSize(int size) {
+float Pos::scaledFontSize(int size) {
 	//take average of the scale factors to use on the font size
 	float fontScaleFactor = (scaleFactorX + scaleFactorY) / 2.0f;
 	return size * fontScaleFactor;
