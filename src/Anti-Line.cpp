@@ -14,6 +14,7 @@ LRESULT CALLBACK windowProcedure(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lpar
 inline void drawScoreString(Gdiplus::Graphics& graphics);
 inline void drawStartAndEndPoints(Gdiplus::Graphics& graphics);
 inline void drawPlayer(Gdiplus::Graphics& graphics);
+inline void drawLines(Gdiplus::Graphics& graphics);
 
 int main() {
     //Initilzing Gdi+
@@ -124,6 +125,7 @@ LRESULT CALLBACK windowProcedure(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lpar
                 drawStartAndEndPoints(graphics);
                 drawPlayer(graphics);
                 drawScoreString(graphics);
+                drawLines(graphics);
             }
 
             //paint on window
@@ -191,4 +193,13 @@ inline void drawPlayer(Gdiplus::Graphics& graphics) {
     graphics.FillRectangle(&playerBrush, GameData::currentRound.player.pos.scaledX, GameData::currentRound.player.pos.scaledY,
                                          GameData::currentRound.player.pos.scaledWidth, GameData::currentRound.player.pos.scaledHeight);
     
+}
+
+inline void drawLines(Gdiplus::Graphics& graphics) {
+    //all lines have the same color so just the first line
+    Gdiplus::Pen linePen(GameData::currentRound.lines.at(0)->getColor());
+
+    for (const std::shared_ptr<Line> l : GameData::currentRound.lines) {
+        graphics.DrawLine(&linePen, l->startPos.scaledX, l->startPos.scaledY, l->endPos.scaledX, l->endPos.scaledY);
+    }
 }

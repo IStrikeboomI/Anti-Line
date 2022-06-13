@@ -14,10 +14,10 @@ void Pos::update(int width, int height) {
 		scaleFactorX = (float)screenWidth / BASE_WIDTH;
 		scaleFactorY = (float)screenHeight / BASE_HEIGHT;
 	} else {
+		std::cout << "t" << "\n";
 		//throw an error if update is called using a negative parameter
 		throw std::invalid_argument("Width nor height cannot be less than or equal to 0");
 	}
-
 	//loop through each instance and scale the dimensions
 	for (Pos* p : instances) {
 		p->scaledX = p->x * scaleFactorX;

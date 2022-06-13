@@ -58,7 +58,9 @@ void Player::update() {
 		}
 	}
 	//set the position to add the velocity
-	pos.setY(pos.getY() + yAxisVelocity);
+	if (yAxisVelocity != 0) {
+		pos.setY(pos.getY() + yAxisVelocity);
+	}
 
 	//since acceleration gets added every time we move, we need to cap it
 	if (xAxisAcceleration > MAX_ACCELERATION) {
@@ -89,9 +91,11 @@ void Player::update() {
 		if (std::abs(xAxisVelocity) <= 0.1) {
 			xAxisVelocity = 0;
 		}
-	}
+	}	
 	//set the position to add the velocity
-	pos.setX(pos.getX() + xAxisVelocity);
+	if (xAxisVelocity != 0) {
+		pos.setX(pos.getX() + xAxisVelocity);
+	}
 	
 }
 
