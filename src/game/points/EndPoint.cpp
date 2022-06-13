@@ -5,5 +5,5 @@ EndPoint::EndPoint() : pos(Util::random(SIDE_LENGTH+730, SIDE_LENGTH + 820), Uti
 }
 
 Gdiplus::Color EndPoint::getColor() const {
-	return Gdiplus::Color(255,0,0);
+	return Gdiplus::Color::Red;
 }

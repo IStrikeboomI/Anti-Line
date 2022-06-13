@@ -5,5 +5,5 @@ StartPoint::StartPoint() : pos(Util::random(SIDE_LENGTH, SIDE_LENGTH + 50), Util
 }
 
 Gdiplus::Color StartPoint::getColor() const {
-	return Gdiplus::Color(0,255,0);
+	return Gdiplus::Color::Lime;
 }
