@@ -200,7 +200,6 @@ inline void drawLines(Gdiplus::Graphics& graphics) {
     Gdiplus::Pen linePen(GameData::currentRound.lines.at(0)->getColor());
 
     for (const std::shared_ptr<Line> l : GameData::currentRound.lines) {
-        std::cout << l.use_count() << "\n";
         graphics.DrawLine(&linePen, l->startPos.scaledX, l->startPos.scaledY, l->endPos.scaledX, l->endPos.scaledY);
     }
 }
