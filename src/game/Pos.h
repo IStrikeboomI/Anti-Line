@@ -39,6 +39,8 @@ public:
 	int getY() const;
 	int getWidth() const;
 	int getHeight() const;
+	bool isCollided(Pos pos) const;
+	static bool isCollided(Pos pos1, Pos pos2);
 
 	friend std::ostream& operator<<(std::ostream& os, const Pos& pos);
 	friend bool operator==(const Pos& pos1, const Pos& pos2);

@@ -92,6 +92,14 @@ int Pos::getHeight() const {
 	return height;
 }
 
+bool Pos::isCollided(Pos pos) const {
+	return x < pos.x + pos.width && x + width > pos.x && y < pos.y + pos.height && y + height > pos.y;
+}
+
+bool Pos::isCollided(Pos pos1, Pos pos2) {
+	return pos1.x < pos2.x + pos2.width && pos1.x + pos1.width > pos2.x && pos1.y < pos2.y + pos2.height && pos1.y + pos1.height > pos2.y;
+}
+
 std::ostream& operator<<(std::ostream& os, const Pos& pos) {
 	os << "Pos["
 		<< "x = " << pos.x
