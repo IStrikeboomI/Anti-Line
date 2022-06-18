@@ -2,7 +2,7 @@
 #include <vector>
 #include <iostream>
 #include <stdexcept>
-//This class is used for positioning
+//This class is used for positioning in the top left
 class Pos {
 private:
 	static std::vector<Pos*> instances;
@@ -39,8 +39,8 @@ public:
 	int getY() const;
 	int getWidth() const;
 	int getHeight() const;
-	bool isCollided(Pos pos) const;
-	static bool isCollided(Pos pos1, Pos pos2);
+	bool isCollided(Pos pos, int extraSpace = 0) const;
+	static bool isCollided(Pos pos1, Pos pos2, int extraSpace = 0);
 
 	friend std::ostream& operator<<(std::ostream& os, const Pos& pos);
 	friend bool operator==(const Pos& pos1, const Pos& pos2);

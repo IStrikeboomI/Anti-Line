@@ -14,4 +14,8 @@ namespace Util {
         if (x < 0) return -1;
         return 0;
     }
+    static float degToRad(float deg) {
+        //0.0174532925199432957 is pi/180
+        return deg * 0.0174532925199432957;
+    }
 }

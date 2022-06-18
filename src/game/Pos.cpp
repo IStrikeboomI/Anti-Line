@@ -92,11 +92,11 @@ int Pos::getHeight() const {
 	return height;
 }
 
-bool Pos::isCollided(Pos pos) const {
-	return x < pos.x + pos.width && x + width > pos.x && y < pos.y + pos.height && y + height > pos.y;
+bool Pos::isCollided(Pos pos, int extraSpace) const {
+	return x < pos.x + pos.width + extraSpace && x + width > pos.x + extraSpace  && y < pos.y + pos.height + extraSpace && y + height > pos.y + extraSpace;
 }
 
-bool Pos::isCollided(Pos pos1, Pos pos2) {
+bool Pos::isCollided(Pos pos1, Pos pos2, int extraSpace) {
 	return pos1.x < pos2.x + pos2.width && pos1.x + pos1.width > pos2.x && pos1.y < pos2.y + pos2.height && pos1.y + pos1.height > pos2.y;
 }
 
