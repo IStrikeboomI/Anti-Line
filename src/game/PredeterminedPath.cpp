@@ -7,38 +7,30 @@ PredeterminedPath::PredeterminedPath(Pos start, Pos end) : start(start), end(end
 	//this is done so the angle from the start to the corner is adjusted for which is higher
 	const bool START_ABOVE_END = start.getY() < end.getY();
 
-	//angle from the end of the first line to the end point (one of the right corners depending if start is above end)
-	const float ANGLE_TO_END = std::atan(std::abs((float)(end.getY() + (end.getHeight() * (START_ABOVE_END ? 1 : 0))) / std::abs(end.getX() + end.getWidth())));
-
-	//fill out the other side lengths of the triangle with an initial longer first line
-	float triangleAdjacentLength = LINE_LENGTH * std::cos(ANGLE_TO_END);
-	float triangleOppositeLength = LINE_LENGTH * std::sin(ANGLE_TO_END);
-
-	std::cout << (ANGLE_TO_END * 57.2957795131) << "\n"; 
-
 	//the start point of the line should be in the on the far east in the middle of the start point
 	const int X_START = start.getX() + start.getWidth();
 	const int Y_START = start.getY() + start.getHeight() / 2;
 
-	int sign = START_ABOVE_END ? 1 : -1;
+	//angle from the end of the first line to the end point's middle
+	const float ANGLE_TO_END = std::atan(std::abs((float)(end.getY() + end.getHeight()/2 - Y_START) / std::abs(end.getX() + end.getWidth() / 2 - X_START)));
+
+	//fill out the other side lengths of the triangle with an initial longer first line
+	const float TRIANGLE_ADJACENT_LENGTH = LINE_LENGTH * std::cos(ANGLE_TO_END);
+	const float TRIANGLE_OPPOSITE_LENGTH = LINE_LENGTH * std::sin(ANGLE_TO_END);
+
+	//so far the line only goes up so we need a variable to make the line go down if end is below start
+	const int SIGN = START_ABOVE_END ? 1 : -1;
 
 	//the first line jutting out from the start point
-	lines.push_back(std::make_shared<Line>(X_START, Y_START, X_START + triangleAdjacentLength, Y_START + triangleOppositeLength * sign));
+	lines.push_back(std::make_shared<Line>(X_START, Y_START, X_START + TRIANGLE_ADJACENT_LENGTH, Y_START + TRIANGLE_OPPOSITE_LENGTH * SIGN));
 
 	while (!lines.at(lines.size() - 1)->endPos.isCollided(end)) {
-		//fill out the other side lengths of the triangle
-		float triangleAdjacentLength = LINE_LENGTH * std::cos(ANGLE_TO_END);
-		float triangleOppositeLength = LINE_LENGTH * std::sin(ANGLE_TO_END);
 
 		//the ending of the previous line
 		Pos previousLineEnd = lines.at(lines.size() - 1)->endPos;
 
-		
-		lines.push_back(std::make_shared<Line>(previousLineEnd.getX(), previousLineEnd.getY(), previousLineEnd.getX() + triangleAdjacentLength, previousLineEnd.getY() + triangleOppositeLength * sign));
+		lines.push_back(std::make_shared<Line>(previousLineEnd.getX(), previousLineEnd.getY(), previousLineEnd.getX() + TRIANGLE_ADJACENT_LENGTH, previousLineEnd.getY() + TRIANGLE_OPPOSITE_LENGTH * SIGN));
 
-		if (lines.size() >= 50) {
- 			break;
-		}
 	}
 }
 
