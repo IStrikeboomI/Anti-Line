@@ -6,7 +6,7 @@
 //This class is used for positioning in the top left
 class Pos {
 private:
-	//static std::vector<Pos*> instances;
+	static std::vector<Pos*> instances;
 	//used for scaling the dimensions
 	static int screenWidth, screenHeight;
 	//These two floats are used for scaling the pos
@@ -16,7 +16,6 @@ private:
 	//this one should be used for moving around
 	int x = 0, y = 0, width = BASE_WIDTH, height = BASE_HEIGHT;
 public:
-	static std::vector<Pos*> instances;
 	const static int BASE_WIDTH = 960, BASE_HEIGHT = 540;
 	//scaled version of the coordinates
 	//this one should be the one used for drawing
@@ -24,6 +23,7 @@ public:
 
 	//unscaled version
 	Pos(int x, int y, int width = 0, int height = 0);
+	//called to remove the pos from the vector when deleted
 	~Pos();
 	//called when resizing
 	static void update(int width = screenWidth, int height = screenHeight);

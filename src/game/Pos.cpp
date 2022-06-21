@@ -42,7 +42,9 @@ Pos::Pos(int x, int y, int width, int height) : x(x), y(y), width(width), height
 }
 
 Pos::~Pos() {
+	//find location of the pos
 	std::vector<Pos*>::iterator iterator = std::find(instances.begin(), instances.end(), this);
+	//check if it exists
 	if (iterator != instances.end()) {
 		instances.erase(iterator);
 	}
