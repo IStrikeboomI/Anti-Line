@@ -104,6 +104,13 @@ bool Pos::isCollided(const Pos& pos, int extraSpace) const {
 	return x < pos.x + pos.width + extraSpace && x + width > pos.x + extraSpace  && y < pos.y + pos.height + extraSpace && y + height > pos.y + extraSpace;
 }
 
+float Pos::getDistanceTo(const Pos& pos) const {
+	//the distance formula
+	int xDistance = x - pos.getX();
+	int yDistance = y - pos.getY();
+	return std::sqrt(xDistance * xDistance + yDistance * yDistance);
+}
+
 std::ostream& operator<<(std::ostream& os, const Pos& pos) {
 	os << "Pos["
 		<< "x = " << pos.x

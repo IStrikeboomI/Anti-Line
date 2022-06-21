@@ -42,7 +42,9 @@ public:
 	int getY() const;
 	int getWidth() const;
 	int getHeight() const;
+
 	bool isCollided(const Pos& pos, int extraSpace = 0) const;
+	float getDistanceTo(const Pos& pos) const;
 
 	friend std::ostream& operator<<(std::ostream& os, const Pos& pos);
 	friend bool operator==(const Pos& pos1, const Pos& pos2);
