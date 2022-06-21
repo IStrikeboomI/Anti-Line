@@ -204,10 +204,10 @@ inline void drawLines(Gdiplus::Graphics& graphics) {
     }
 
     //DON'T FORGET TO REMOVE THIS (USED FOR DEBUGGING)
-    Gdiplus::Pen testPen(Gdiplus::Color(89, 14, 99),5);
+    Gdiplus::Pen testPen(Gdiplus::Color(89, 14, 98),5);
     graphics.DrawRectangle(&testPen, GameData::currentRound.endPoint.pos.scaledX + GameData::currentRound.endPoint.pos.scaledWidth/2, GameData::currentRound.endPoint.pos.scaledY + GameData::currentRound.endPoint.pos.scaledHeight/2, 10, 10);
     for (const std::shared_ptr<Line> l : GameData::currentRound.path.lines) {
         graphics.DrawLine(&testPen, l->startPos.scaledX, l->startPos.scaledY, l->endPos.scaledX, l->endPos.scaledY);
-
+    
     }
 }
