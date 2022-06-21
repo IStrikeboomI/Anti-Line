@@ -8,5 +8,7 @@ public:
 
 	Line(int x1,int y1,int x2,int y2);
 	Gdiplus::Color getColor() const override;
+	//used for chekcing if two lines intersect
+	bool doLinesIntersect(const Line& l) const;
 };
 
