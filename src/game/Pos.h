@@ -1,11 +1,12 @@
 #pragma once
 #include <vector>
+#include <algorithm>
 #include <iostream>
 #include <stdexcept>
 //This class is used for positioning in the top left
 class Pos {
 private:
-	static std::vector<Pos*> instances;
+	//static std::vector<Pos*> instances;
 	//used for scaling the dimensions
 	static int screenWidth, screenHeight;
 	//These two floats are used for scaling the pos
@@ -13,8 +14,9 @@ private:
 	static float scaleFactorX, scaleFactorY;
 	//"real" coordinates
 	//this one should be used for moving around
-	int x = 0, y = 0, width = 0, height = 0;
+	int x = 0, y = 0, width = BASE_WIDTH, height = BASE_HEIGHT;
 public:
+	static std::vector<Pos*> instances;
 	const static int BASE_WIDTH = 960, BASE_HEIGHT = 540;
 	//scaled version of the coordinates
 	//this one should be the one used for drawing
@@ -22,6 +24,7 @@ public:
 
 	//unscaled version
 	Pos(int x, int y, int width = 0, int height = 0);
+	~Pos();
 	//called when resizing
 	static void update(int width = screenWidth, int height = screenHeight);
 	//helper function used to scale font size
@@ -39,8 +42,7 @@ public:
 	int getY() const;
 	int getWidth() const;
 	int getHeight() const;
-	bool isCollided(Pos pos, int extraSpace = 0) const;
-	static bool isCollided(Pos pos1, Pos pos2, int extraSpace = 0);
+	bool isCollided(const Pos& pos, int extraSpace = 0) const;
 
 	friend std::ostream& operator<<(std::ostream& os, const Pos& pos);
 	friend bool operator==(const Pos& pos1, const Pos& pos2);

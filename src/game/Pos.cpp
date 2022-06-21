@@ -14,7 +14,6 @@ void Pos::update(int width, int height) {
 		scaleFactorX = (float)screenWidth / BASE_WIDTH;
 		scaleFactorY = (float)screenHeight / BASE_HEIGHT;
 	} else {
-		std::cout << "t" << "\n";
 		//throw an error if update is called using a negative parameter
 		throw std::invalid_argument("Width nor height cannot be less than or equal to 0");
 	}
@@ -40,6 +39,13 @@ void Pos::clearInstances() {
 Pos::Pos(int x, int y, int width, int height) : x(x), y(y), width(width), height(height),
 												scaledX(x), scaledY(y),scaledWidth(width),scaledHeight(height) {
 	instances.push_back(this);
+}
+
+Pos::~Pos() {
+	std::vector<Pos*>::iterator iterator = std::find(instances.begin(), instances.end(), this);
+	if (iterator != instances.end()) {
+		instances.erase(iterator);
+	}
 }
 
 void Pos::setX(int x) {
@@ -92,12 +98,8 @@ int Pos::getHeight() const {
 	return height;
 }
 
-bool Pos::isCollided(Pos pos, int extraSpace) const {
+bool Pos::isCollided(const Pos& pos, int extraSpace) const {
 	return x < pos.x + pos.width + extraSpace && x + width > pos.x + extraSpace  && y < pos.y + pos.height + extraSpace && y + height > pos.y + extraSpace;
-}
-
-bool Pos::isCollided(Pos pos1, Pos pos2, int extraSpace) {
-	return pos1.x < pos2.x + pos2.width && pos1.x + pos1.width > pos2.x && pos1.y < pos2.y + pos2.height && pos1.y + pos1.height > pos2.y;
 }
 
 std::ostream& operator<<(std::ostream& os, const Pos& pos) {
