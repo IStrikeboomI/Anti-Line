@@ -74,6 +74,9 @@
     <ClInclude Include="src\game\PredeterminedPath.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\game\points\Point.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />
