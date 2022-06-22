@@ -1,12 +1,11 @@
 #pragma once
-#include "../Pos.h"
+
+#include "Point.h"
 #include "../../Util.h"
-#include "../../IPaintable.h"
-class StartPoint : public IPaintable {
+class StartPoint : public Point {
 public:
-	const static int SIDE_LENGTH = 50;
-	Pos pos;
 	StartPoint();
+
 	Gdiplus::Color getColor() const override;
 };
 

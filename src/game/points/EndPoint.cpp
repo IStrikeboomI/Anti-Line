@@ -1,7 +1,10 @@
 #include "EndPoint.h"
 
-EndPoint::EndPoint() : pos(Util::random(SIDE_LENGTH+730, SIDE_LENGTH + 820), Util::random(SIDE_LENGTH, 540 - SIDE_LENGTH), SIDE_LENGTH, SIDE_LENGTH) {
+EndPoint::EndPoint() : Point(Util::random(SIDE_LENGTH + 730, SIDE_LENGTH + 820), Util::random(SIDE_LENGTH, 540 - SIDE_LENGTH)) {
 
+}
+
+void EndPoint::onPlayerCollide(Player p) {
 }
 
 Gdiplus::Color EndPoint::getColor() const {
