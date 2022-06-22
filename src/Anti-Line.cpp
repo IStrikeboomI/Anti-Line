@@ -1,10 +1,10 @@
+#include "game/points/StartPoint.h"
+#include "GameData.h"
+#include "game/Pos.h"
 #include <Windows.h>
 #include <gdiplus.h>
 #include <string>
 #include <iostream>
-#include "game/points/StartPoint.h"
-#include "GameData.h"
-#include "game/Pos.h"
 
 //constant for timer's code
 static const int UPDATE_TIMER = 12;
