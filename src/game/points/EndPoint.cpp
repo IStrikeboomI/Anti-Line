@@ -5,6 +5,7 @@ EndPoint::EndPoint() : Point(Util::random(SIDE_LENGTH + 730, SIDE_LENGTH + 820),
 }
 
 void EndPoint::onPlayerCollide(Player p) {
+	
 }
 
 Gdiplus::Color EndPoint::getColor() const {

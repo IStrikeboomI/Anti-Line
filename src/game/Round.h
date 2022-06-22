@@ -15,6 +15,7 @@ public:
 	Player player;
 	PredeterminedPath path;
 	std::vector<std::shared_ptr<Line>> lines;
+
 	Round();
 	void update() override;
 	void win();
