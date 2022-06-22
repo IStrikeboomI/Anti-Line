@@ -144,6 +144,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\game\Game.cpp" />
     <ClCompile Include="src\game\PredeterminedPath.cpp" />
     <ClCompile Include="src\game\Line.cpp" />
     <ClCompile Include="src\game\Player.cpp" />
@@ -154,12 +155,13 @@
     <ClCompile Include="src\game\points\StartPoint.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\GameNamespaceWrapper.h" />
+    <ClInclude Include="src\game\Game.h" />
     <ClInclude Include="src\game\points\Point.h" />
     <ClInclude Include="src\game\PredeterminedPath.h" />
     <ClInclude Include="src\game\Line.h" />
     <ClInclude Include="src\game\Player.h" />
     <ClInclude Include="src\game\points\EndPoint.h" />
-    <ClInclude Include="src\GameData.h" />
     <ClInclude Include="src\game\Round.h" />
     <ClInclude Include="src\game\Pos.h" />
     <ClInclude Include="src\game\points\StartPoint.h" />

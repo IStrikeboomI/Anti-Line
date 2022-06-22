@@ -23,6 +23,8 @@ public:
 
 	//unscaled version
 	Pos(int x, int y, int width = 0, int height = 0);
+	//copy constructor
+	Pos(const Pos& p) = default;
 	//called to remove the pos from the vector when deleted
 	~Pos();
 	//called when resizing
@@ -46,6 +48,7 @@ public:
 	bool isCollided(const Pos& pos, int extraSpace = 0) const;
 	float getDistanceTo(const Pos& pos) const;
 
+	Pos& operator=(const Pos& p) = default;
 	friend std::ostream& operator<<(std::ostream& os, const Pos& pos);
 	friend bool operator==(const Pos& pos1, const Pos& pos2);
 	friend bool operator!=(const Pos& pos1, const Pos& pos2);
