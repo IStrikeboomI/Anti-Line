@@ -6,7 +6,6 @@
 #include "Line.h"
 #include "PredeterminedPath.h"
 #include <vector>
-#include <functional>
 //Each indiviual round will be stored using this class
 class Round : public ITickable {
 public:

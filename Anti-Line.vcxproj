@@ -155,7 +155,6 @@
     <ClCompile Include="src\game\points\StartPoint.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\GameNamespaceWrapper.h" />
     <ClInclude Include="src\game\Game.h" />
     <ClInclude Include="src\game\points\Point.h" />
     <ClInclude Include="src\game\PredeterminedPath.h" />

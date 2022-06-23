@@ -1,4 +1,4 @@
-#include "GameNamespaceWrapper.h"
+#include "game/Game.h"
 #include <Windows.h>
 #include <gdiplus.h>
 #include <string>
@@ -14,7 +14,7 @@ inline void drawStartAndEndPoints(Gdiplus::Graphics& graphics);
 inline void drawPlayer(Gdiplus::Graphics& graphics);
 inline void drawLines(Gdiplus::Graphics& graphics);
 
-int main() {
+int main() {;
     //Initilzing Gdi+
     Gdiplus::GdiplusStartupInput gdiplusStartupInput;
     ULONG_PTR gdiplusToken;
@@ -71,7 +71,7 @@ LRESULT CALLBACK windowProcedure(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lpar
                 case UPDATE_TIMER:
                 {
                     //update the round
-                    GameWrapper::game.update();
+                    Game::getInstance().update();
                     //redraw window
                     InvalidateRect(hwnd, nullptr, true);
                     break;
@@ -119,7 +119,7 @@ LRESULT CALLBACK windowProcedure(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lpar
             Gdiplus::Graphics graphics(memDC);
 
             //only draw game objects if in a round
-            if (GameWrapper::game.inRound) {
+            if (Game::getInstance().inRound) {
                 drawStartAndEndPoints(graphics);
                 drawPlayer(graphics);
                 drawScoreString(graphics);
@@ -139,25 +139,25 @@ LRESULT CALLBACK windowProcedure(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lpar
         case WM_KEYUP:
         {
             //only detect key inputs if in a round
-            if (GameWrapper::game.inRound) {
+            if (Game::getInstance().inRound) {
                 //read key inputs
                 //no break; in the if statements so we can use multiple keys at once
                 
                 //up arrow OR W key
                 if (GetAsyncKeyState(VK_UP) & 0x8000 || GetAsyncKeyState(0x57) & 0x8000) {
-                    GameWrapper::game.currentRound.player.moveUp();  
+                    Game::getInstance().currentRound.player.moveUp();  
                 }
                 //down arrow OR S key
                 if (GetAsyncKeyState(VK_DOWN) & 0x8000 || GetAsyncKeyState(0x53) & 0x8000) {
-                    GameWrapper::game.currentRound.player.moveDown();
+                    Game::getInstance().currentRound.player.moveDown();
                 }
                 //left arrow OR A key
                 if (GetAsyncKeyState(VK_LEFT) & 0x8000 || GetAsyncKeyState(0x41) & 0x8000) {
-                    GameWrapper::game.currentRound.player.moveLeft();
+                    Game::getInstance().currentRound.player.moveLeft();
                 }
                 //right arrow OR D key
                 if (GetAsyncKeyState(VK_RIGHT) & 0x8000 || GetAsyncKeyState(0x44) & 0x8000) {
-                    GameWrapper::game.currentRound.player.moveRight(); 
+                    Game::getInstance().currentRound.player.moveRight(); 
                 }
             }
             break;
@@ -169,7 +169,7 @@ LRESULT CALLBACK windowProcedure(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lpar
 
 inline void drawScoreString(Gdiplus::Graphics& graphics) {
     std::wstring scoreString(L"Score: ");
-    scoreString += std::to_wstring(GameWrapper::game.score);
+    scoreString += std::to_wstring(Game::getInstance().score);
     Gdiplus::Font font(L"Arial", Pos::scaledFontSize(48));
     Gdiplus::SolidBrush scoreBrush(Gdiplus::Color(132, 135, 135));
 
@@ -177,34 +177,34 @@ inline void drawScoreString(Gdiplus::Graphics& graphics) {
 }
 
 inline void drawStartAndEndPoints(Gdiplus::Graphics& graphics) {
-    Gdiplus::SolidBrush startingPointBrush(GameWrapper::game.currentRound.startPoint.getColor());
-    graphics.FillRectangle(&startingPointBrush, GameWrapper::game.currentRound.startPoint.pos.scaledX, GameWrapper::game.currentRound.startPoint.pos.scaledY, 
-                                                GameWrapper::game.currentRound.startPoint.pos.scaledWidth, GameWrapper::game.currentRound.startPoint.pos.scaledHeight);
+    Gdiplus::SolidBrush startingPointBrush(Game::getInstance().currentRound.startPoint.getColor());
+    graphics.FillRectangle(&startingPointBrush, Game::getInstance().currentRound.startPoint.pos.scaledX, Game::getInstance().currentRound.startPoint.pos.scaledY, 
+                                                Game::getInstance().currentRound.startPoint.pos.scaledWidth, Game::getInstance().currentRound.startPoint.pos.scaledHeight);
 
-    Gdiplus::SolidBrush endingPointBrush(GameWrapper::game.currentRound.endPoint.getColor());
-    graphics.FillRectangle(&endingPointBrush, GameWrapper::game.currentRound.endPoint.pos.scaledX, GameWrapper::game.currentRound.endPoint.pos.scaledY,
-                                              GameWrapper::game.currentRound.endPoint.pos.scaledWidth, GameWrapper::game.currentRound.endPoint.pos.scaledHeight);
+    Gdiplus::SolidBrush endingPointBrush(Game::getInstance().currentRound.endPoint.getColor());
+    graphics.FillRectangle(&endingPointBrush, Game::getInstance().currentRound.endPoint.pos.scaledX, Game::getInstance().currentRound.endPoint.pos.scaledY,
+                                              Game::getInstance().currentRound.endPoint.pos.scaledWidth, Game::getInstance().currentRound.endPoint.pos.scaledHeight);
 }
 
 inline void drawPlayer(Gdiplus::Graphics& graphics) {
-    Gdiplus::SolidBrush playerBrush(GameWrapper::game.currentRound.player.getColor());
-    graphics.FillRectangle(&playerBrush, GameWrapper::game.currentRound.player.pos.scaledX, GameWrapper::game.currentRound.player.pos.scaledY,
-                                         GameWrapper::game.currentRound.player.pos.scaledWidth, GameWrapper::game.currentRound.player.pos.scaledHeight);
+    Gdiplus::SolidBrush playerBrush(Game::getInstance().currentRound.player.getColor());
+    graphics.FillRectangle(&playerBrush, Game::getInstance().currentRound.player.pos.scaledX, Game::getInstance().currentRound.player.pos.scaledY,
+                                         Game::getInstance().currentRound.player.pos.scaledWidth, Game::getInstance().currentRound.player.pos.scaledHeight);
     
 }
 
 inline void drawLines(Gdiplus::Graphics& graphics) {
     //all lines have the same color so just the first line
-    Gdiplus::Pen linePen(GameWrapper::game.currentRound.lines.at(0)->getColor());
+    Gdiplus::Pen linePen(Game::getInstance().currentRound.lines.at(0)->getColor());
 
-    for (const std::shared_ptr<Line> l : GameWrapper::game.currentRound.lines) {
+    for (const std::shared_ptr<Line> l : Game::getInstance().currentRound.lines) {
         graphics.DrawLine(&linePen, l->startPos.scaledX, l->startPos.scaledY, l->endPos.scaledX, l->endPos.scaledY);
     }
 
     //DON'T FORGET TO REMOVE THIS (USED FOR DEBUGGING)
     Gdiplus::Pen testPen(Gdiplus::Color(89, 14, 98),5);
-    graphics.DrawRectangle(&testPen, GameWrapper::game.currentRound.endPoint.pos.scaledX + GameWrapper::game.currentRound.endPoint.pos.scaledWidth/2, GameWrapper::game.currentRound.endPoint.pos.scaledY + GameWrapper::game.currentRound.endPoint.pos.scaledHeight/2, 10, 10);
-    for (const std::shared_ptr<Line> l : GameWrapper::game.currentRound.path.lines) {
+    graphics.DrawRectangle(&testPen, Game::getInstance().currentRound.endPoint.pos.scaledX + Game::getInstance().currentRound.endPoint.pos.scaledWidth/2, Game::getInstance().currentRound.endPoint.pos.scaledY + Game::getInstance().currentRound.endPoint.pos.scaledHeight/2, 10, 10);
+    for (const std::shared_ptr<Line> l : Game::getInstance().currentRound.path.lines) {
         graphics.DrawLine(&testPen, l->startPos.scaledX, l->startPos.scaledY, l->endPos.scaledX, l->endPos.scaledY);
     
     }
