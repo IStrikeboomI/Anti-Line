@@ -18,7 +18,5 @@ public:
 
 	Round();
 	void update() override;
-	void win();
-	void lose();
 };
 

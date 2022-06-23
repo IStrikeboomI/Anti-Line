@@ -1,6 +1,4 @@
-#include "game/points/StartPoint.h"
 #include "GameNamespaceWrapper.h"
-#include "game/Pos.h"
 #include <Windows.h>
 #include <gdiplus.h>
 #include <string>
@@ -17,7 +15,6 @@ inline void drawPlayer(Gdiplus::Graphics& graphics);
 inline void drawLines(Gdiplus::Graphics& graphics);
 
 int main() {
-    Game();
     //Initilzing Gdi+
     Gdiplus::GdiplusStartupInput gdiplusStartupInput;
     ULONG_PTR gdiplusToken;
@@ -74,7 +71,7 @@ LRESULT CALLBACK windowProcedure(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lpar
                 case UPDATE_TIMER:
                 {
                     //update the round
-                    GameWrapper::game.currentRound.update();
+                    GameWrapper::game.update();
                     //redraw window
                     InvalidateRect(hwnd, nullptr, true);
                     break;

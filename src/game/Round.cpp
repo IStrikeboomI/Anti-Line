@@ -29,12 +29,16 @@ void Round::update() {
 	if (player.pos.isCollided(endPoint.pos)) {
 		endPoint.onPlayerCollide(player);
 	}
-}
 
-void Round::win() {
+	const Pos PLAYER_POS = player.pos;
+	Line topX(PLAYER_POS.getX(), PLAYER_POS.getY(), PLAYER_POS.getX() + PLAYER_POS.getWidth(), PLAYER_POS.getY());
+	Line bottomX(PLAYER_POS.getX(), PLAYER_POS.getY() + PLAYER_POS.getHeight(), PLAYER_POS.getX() + PLAYER_POS.getWidth(), PLAYER_POS.getY() + PLAYER_POS.getHeight());
+	Line leftY(PLAYER_POS.getX(), PLAYER_POS.getY(), PLAYER_POS.getX(), PLAYER_POS.getY() + PLAYER_POS.getHeight());
+	Line rightY(PLAYER_POS.getX() + PLAYER_POS.getWidth(), PLAYER_POS.getY(), PLAYER_POS.getX() + PLAYER_POS.getWidth(), PLAYER_POS.getY() + PLAYER_POS.getHeight());
 
-}
-
-void Round::lose() {
-
+	for (const std::shared_ptr<Line>& l : lines) {
+		if (l->doLinesIntersect(topX) || l->doLinesIntersect(bottomX) || l->doLinesIntersect(leftY) || l->doLinesIntersect(rightY) ) {
+			
+		}
+	}
 }
