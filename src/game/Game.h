@@ -2,6 +2,9 @@
 #include "Round.h"
 #include "../ITickable.h"
 class Game : public ITickable{
+private:
+	//we don't need to initalize anything
+	Game() {};
 public:
 	Round currentRound;
 	int score = 0;
@@ -12,5 +15,8 @@ public:
 	void win();
 	void lose();
 	void update() override;
+	//don't implement these two or else we might get multiple copies
+	Game(Game const&) = delete;
+	void operator=(Game const&) = delete;
 };
 
