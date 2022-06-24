@@ -17,5 +17,10 @@ public:
 
 	Round();
 	void update() override;
+	//we need to overload the assignment operator
+	Round& operator=(const Round&) = default;
+	//rule of three because of the above line
+	Round(const Round&) = default;
+	~Round() = default;
 };
 
