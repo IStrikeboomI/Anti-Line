@@ -48,8 +48,10 @@ public:
 	bool isCollided(const Pos& pos, int extraSpace = 0) const;
 	float getDistanceTo(const Pos& pos) const;
 
+	//copy assignment operator
 	Pos& operator=(const Pos& p) = default;
 	friend std::ostream& operator<<(std::ostream& os, const Pos& pos);
+	//equivalence operators
 	friend bool operator==(const Pos& pos1, const Pos& pos2);
 	friend bool operator!=(const Pos& pos1, const Pos& pos2);
 
