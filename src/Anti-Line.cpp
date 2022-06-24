@@ -124,6 +124,13 @@ LRESULT CALLBACK windowProcedure(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lpar
                 drawPlayer(graphics);
                 drawScoreString(graphics);
                 drawLines(graphics);
+            } else {
+                // draw corrosponding message on the round status
+                if (Game::getInstance().status == RoundStatus::WON) {
+                   
+                } else if (Game::getInstance().status == RoundStatus::LOST) {
+
+                }
             }
 
             //paint on window

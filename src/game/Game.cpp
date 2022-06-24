@@ -7,11 +7,13 @@ Game& Game::getInstance() {
 
 void Game::win() {
 	inRound = false;
+	status = RoundStatus::WON;
 	score++;
 }
 
 void Game::lose() {
 	inRound = false;
+	status = RoundStatus::LOST;
 }
 
 void Game::update() {

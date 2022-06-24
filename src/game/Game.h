@@ -1,6 +1,7 @@
 #pragma once
 #include "Round.h"
 #include "../ITickable.h"
+#include "RoundStatus.h"
 class Game : public ITickable{
 private:
 	//we don't need to initalize anything
@@ -10,6 +11,7 @@ public:
 	int score = 0;
 	bool AIMode = false;
 	bool inRound = true;
+	RoundStatus status = RoundStatus::ONGOING;
 
 	//this class is a singleton
 	static Game& getInstance();
