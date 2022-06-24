@@ -13,8 +13,9 @@ private:
 	//used for movement in both axes respectively
 	float xAxisAcceleration = 0, xAxisVelocity = 0, yAxisAcceleration = 0, yAxisVelocity = 0;
 	//used for capping out acceleration and velocity so we don't go too fast
-	const float MAX_ACCELERATION = 5, MAX_VELOCITY = 10, ACCELERATION_INCREASE_AMOUNT = 1;
+	constexpr static float MAX_ACCELERATION = 5, MAX_VELOCITY = 10, ACCELERATION_INCREASE_AMOUNT = 1;
 public:
+
 	const static int SIDE_LENGTH = 30;
 	Pos pos;
 

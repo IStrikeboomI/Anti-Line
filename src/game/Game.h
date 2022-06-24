@@ -11,6 +11,7 @@ public:
 	bool AIMode = false;
 	bool inRound = true;
 
+	//this class is a singleton
 	static Game& getInstance();
 	void win();
 	void lose();
