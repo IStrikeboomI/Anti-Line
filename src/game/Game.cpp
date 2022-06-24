@@ -6,9 +6,8 @@ Game& Game::getInstance() {
 }
 
 void Game::win() {
-	//inRound = false;
+	inRound = false;
 	score++;
-	currentRound = Round();
 }
 
 void Game::lose() {
@@ -17,4 +16,8 @@ void Game::lose() {
 
 void Game::update() {
 	currentRound.update();
+}
+
+void Game::newRound() {
+	currentRound = Round();
 }
