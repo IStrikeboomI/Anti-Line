@@ -145,8 +145,8 @@ LRESULT CALLBACK windowProcedure(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lpar
         //WM_KEYUP instead of WM_KEYDOWN so it doesn't get faster when holding down after a few ticks
         case WM_KEYUP:
         {
-            //only detect key inputs if in a round
-            if (Game::getInstance().inRound) {
+            //only detect key inputs if in a round, not in ai mode, and if window is input focused
+            if (Game::getInstance().inRound && !Game::getInstance().AIMode && hwnd == GetFocus()) {
                 //read key inputs
                 //no break; in the if statements so we can use multiple keys at once
                 
