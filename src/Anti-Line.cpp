@@ -7,6 +7,10 @@
 //constant for timer's code
 static const int UPDATE_TIMER = 12;
 
+//this stores how many ticks its been showing a player wins/loses message
+//used to time how long its going to be
+static int fadeTime = 0;
+
 LRESULT CALLBACK windowProcedure(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam);
 //These methods are used for drawing separate objects to not clutter the WM_PAINT call
 inline void drawScoreString(Gdiplus::Graphics& graphics);
@@ -72,6 +76,11 @@ LRESULT CALLBACK windowProcedure(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lpar
                 {
                     //update the round
                     Game::getInstance().update();
+                    if (!Game::getInstance().inRound) {
+                        fadeTime++;
+                    } else {
+                        fadeTime = 0;
+                    }
                     //redraw window
                     InvalidateRect(hwnd, nullptr, true);
                     break;
@@ -127,9 +136,12 @@ LRESULT CALLBACK windowProcedure(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lpar
             } else {
                 // draw corrosponding message on the round status
                 if (Game::getInstance().status == RoundStatus::WON) {
-                   
+
                 } else if (Game::getInstance().status == RoundStatus::LOST) {
 
+                }
+                if (fadeTime == 2500 / 33) {
+                    Game::getInstance().newRound();
                 }
             }
 

@@ -22,4 +22,5 @@ void Game::update() {
 
 void Game::newRound() {
 	currentRound = Round();
+	inRound = true;
 }
