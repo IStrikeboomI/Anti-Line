@@ -9,6 +9,7 @@ void Game::win() {
 	inRound = false;
 	status = RoundStatus::WON;
 	score++;
+	currentRound = Round();
 }
 
 void Game::lose() {
@@ -21,6 +22,5 @@ void Game::update() {
 }
 
 void Game::newRound() {
-	currentRound = Round();
 	inRound = true;
 }
