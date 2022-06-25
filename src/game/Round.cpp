@@ -19,6 +19,9 @@ Round::Round() : startPoint(), endPoint(), player(), path(startPoint.pos, endPoi
 		} while (path.isLineNear(*l,10));
 		lines.push_back(l);
 	}
+
+	//update all the positions to make sure the lines are in the correct place
+	Pos::update();
 }
 
 void Round::update() {
