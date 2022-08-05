@@ -94,7 +94,7 @@ LRESULT CALLBACK windowProcedure(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lpar
         {
             int width = LOWORD(lparam);
             int height = HIWORD(lparam);
-            Pos::update(width, height);
+            Pos::updateAll(width, height);
             //redraw window after resizing
             RedrawWindow(hwnd, nullptr, nullptr, RDW_INVALIDATE | RDW_ERASE);
             break;

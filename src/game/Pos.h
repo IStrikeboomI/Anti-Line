@@ -27,8 +27,10 @@ public:
 	Pos(const Pos& p) = default;
 	//called to remove the pos from the vector when deleted
 	~Pos();
-	//called when resizing
-	static void update(int width = screenWidth, int height = screenHeight);
+	//called when resizing the window
+	static void updateAll(int width, int height);
+	//called when the position changes using the set methods
+	void update();
 	//helper function used to scale font size
 	static float scaledFontSize(int size);
 	//used for removing all the Pos in the vector

@@ -5,7 +5,7 @@ float Pos::scaleFactorX = (float)screenWidth / BASE_WIDTH;
 float Pos::scaleFactorY = (float)screenHeight / BASE_HEIGHT;
 std::vector<Pos*> Pos::instances;
 
-void Pos::update(int width, int height) {
+void Pos::updateAll(int width, int height) {
 	//make sure our dimensions are valid by being positive
 	if (width >= 0 && height >= 0) {
 		//set all the values
@@ -24,6 +24,13 @@ void Pos::update(int width, int height) {
 		p->scaledWidth = p->width * scaleFactorX;
 		p->scaledHeight = p->height * scaleFactorY;
 	}
+}
+
+void Pos::update() {
+	scaledX = x * scaleFactorX;
+	scaledY = y * scaleFactorY;
+	scaledWidth = width * scaleFactorX;
+	scaledHeight = height * scaleFactorY;
 }
 
 float Pos::scaledFontSize(int size) {
