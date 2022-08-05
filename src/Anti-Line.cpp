@@ -143,7 +143,7 @@ LRESULT CALLBACK windowProcedure(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lpar
                     drawLostText(graphics, fadeTime * 4);
                 }
                 if (fadeTime == 2000 / 33) {
-                    Game::getInstance().newRound();
+                    Game::getInstance().displayRound();
                 }
             }
 

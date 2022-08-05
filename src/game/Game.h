@@ -18,7 +18,7 @@ public:
 	void win();
 	void lose();
 	void update() override;
-	void newRound();
+	void displayRound();
 	//don't implement these two or else we might get multiple copies
 	Game(Game const&) = delete;
 	void operator=(Game const&) = delete;

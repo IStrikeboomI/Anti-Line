@@ -15,12 +15,14 @@ void Game::win() {
 void Game::lose() {
 	inRound = false;
 	status = RoundStatus::LOST;
+	score = 0;
+	currentRound = Round();
 }
 
 void Game::update() {
 	currentRound.update();
 }
 
-void Game::newRound() {
+void Game::displayRound() {
 	inRound = true;
 }
