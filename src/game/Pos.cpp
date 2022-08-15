@@ -1,8 +1,8 @@
 #include "Pos.h"
 int Pos::screenWidth = BASE_WIDTH;
 int Pos::screenHeight = BASE_HEIGHT;
-float Pos::scaleFactorX = (float)screenWidth / BASE_WIDTH;
-float Pos::scaleFactorY = (float)screenHeight / BASE_HEIGHT;
+double Pos::scaleFactorX = (double)screenWidth / BASE_WIDTH;
+double Pos::scaleFactorY = (double)screenHeight / BASE_HEIGHT;
 std::vector<Pos*> Pos::instances;
 
 void Pos::updateAll(int width, int height) {
@@ -11,8 +11,8 @@ void Pos::updateAll(int width, int height) {
 		//set all the values
 		screenWidth = width;
 		screenHeight = height;
-		scaleFactorX = (float)screenWidth / BASE_WIDTH;
-		scaleFactorY = (float)screenHeight / BASE_HEIGHT;
+		scaleFactorX = (double)screenWidth / BASE_WIDTH;
+		scaleFactorY = (double)screenHeight / BASE_HEIGHT;
 	} else {
 		//throw an error if update is called using a negative parameter
 		throw std::invalid_argument("Width nor height cannot be less than or equal to 0");
@@ -33,9 +33,9 @@ void Pos::update() {
 	scaledHeight = height * scaleFactorY;
 }
 
-float Pos::scaledFontSize(int size) {
+double Pos::scaledFontSize(int size) {
 	//take average of the scale factors to use on the font size
-	float fontScaleFactor = (scaleFactorX + scaleFactorY) / 2.0f;
+	double fontScaleFactor = (scaleFactorX + scaleFactorY) / 2.0f;
 	return size * fontScaleFactor;
 }
 
@@ -111,7 +111,7 @@ bool Pos::isCollided(const Pos& pos, int extraSpace) const {
 	return x < pos.x + pos.width + extraSpace && x + width > pos.x + extraSpace  && y < pos.y + pos.height + extraSpace && y + height > pos.y + extraSpace;
 }
 
-float Pos::getDistanceTo(const Pos& pos) const {
+double Pos::getDistanceTo(const Pos& pos) const {
 	//the distance formula
 	int xDistance = x - pos.getX();
 	int yDistance = y - pos.getY();

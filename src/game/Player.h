@@ -11,9 +11,9 @@ private:
 	//then it uses "| 0xFF000000" to set the alpha of it to max because argb holds alpha first
 	int argb = Util::random(0, 0xFFFFFF) | 0xFF000000;
 	//used for movement in both axes respectively
-	float xAxisAcceleration = 0, xAxisVelocity = 0, yAxisAcceleration = 0, yAxisVelocity = 0;
+	double xAxisAcceleration = 0, xAxisVelocity = 0, yAxisAcceleration = 0, yAxisVelocity = 0;
 	//used for capping out acceleration and velocity so we don't go too fast
-	constexpr static float MAX_ACCELERATION = 5, MAX_VELOCITY = 10, ACCELERATION_INCREASE_AMOUNT = 1;
+	constexpr static double MAX_ACCELERATION = 5, MAX_VELOCITY = 10, ACCELERATION_INCREASE_AMOUNT = 1;
 public:
 
 	const static int SIDE_LENGTH = 30;

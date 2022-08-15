@@ -9,12 +9,12 @@ namespace Util {
 
         return distribution(rng);
 	}
-    static int signum(float x) {
+    static int signum(double x) {
         if (x > 0) return 1;
         if (x < 0) return -1;
         return 0;
     }
-    static float degToRad(float deg) {
+    static double degToRad(double deg) {
         //0.0174532925199432957 is pi/180
         return deg * 0.0174532925199432957;
     }

@@ -11,7 +11,7 @@ private:
 	static int screenWidth, screenHeight;
 	//These two floats are used for scaling the pos
 	//a scale factor of 1 on each is for a 960x540 window
-	static float scaleFactorX, scaleFactorY;
+	static double scaleFactorX, scaleFactorY;
 	//"real" coordinates
 	//this one should be used for moving around
 	int x = 0, y = 0, width = BASE_WIDTH, height = BASE_HEIGHT;
@@ -32,7 +32,7 @@ public:
 	//called when the position changes using the set methods
 	void update();
 	//helper function used to scale font size
-	static float scaledFontSize(int size);
+	static double scaledFontSize(int size);
 	//used for removing all the Pos in the vector
 	//used during round changes
 	static void clearInstances();
@@ -48,7 +48,7 @@ public:
 	int getHeight() const;
 
 	bool isCollided(const Pos& pos, int extraSpace = 0) const;
-	float getDistanceTo(const Pos& pos) const;
+	double getDistanceTo(const Pos& pos) const;
 
 	//copy assignment operator
 	Pos& operator=(const Pos& p) = default;

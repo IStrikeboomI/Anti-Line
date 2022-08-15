@@ -10,23 +10,23 @@ Gdiplus::Color Line::getColor() const {
 
 //this is basically code i took from stack overflow and just changed the variables around
 bool Line::doLinesIntersect(const Line& l) const {
-    float p0_x = l.startPos.getX(); 
-    float p0_y = l.startPos.getY();
-    float p1_x = l.endPos.getX(); 
-    float p1_y = l.endPos.getY();
+    double p0_x = l.startPos.getX(); 
+    double p0_y = l.startPos.getY();
+    double p1_x = l.endPos.getX(); 
+    double p1_y = l.endPos.getY();
 
-    float p2_x = startPos.getX(); 
-    float p2_y = startPos.getY();
-    float p3_x = endPos.getX(); 
-    float p3_y = endPos.getY();
+    double p2_x = startPos.getX(); 
+    double p2_y = startPos.getY();
+    double p3_x = endPos.getX(); 
+    double p3_y = endPos.getY();
 
-    float s1_x = p1_x - p0_x;     
-    float s1_y = p1_y - p0_y;
-    float s2_x = p3_x - p2_x;     
-    float s2_y = p3_y - p2_y;
+    double s1_x = p1_x - p0_x;     
+    double s1_y = p1_y - p0_y;
+    double s2_x = p3_x - p2_x;     
+    double s2_y = p3_y - p2_y;
 
-    float s = (-s1_y * (p0_x - p2_x) + s1_x * (p0_y - p2_y)) / (-s2_x * s1_y + s1_x * s2_y);
-    float t = (s2_x * (p0_y - p2_y) - s2_y * (p0_x - p2_x)) / (-s2_x * s1_y + s1_x * s2_y);
+    double s = (-s1_y * (p0_x - p2_x) + s1_x * (p0_y - p2_y)) / (-s2_x * s1_y + s1_x * s2_y);
+    double t = (s2_x * (p0_y - p2_y) - s2_y * (p0_x - p2_x)) / (-s2_x * s1_y + s1_x * s2_y);
 
     //intersect found
     if (s >= 0 && s <= 1 && t >= 0 && t <= 1) {
