@@ -6,6 +6,8 @@
 
 //constant for timer's code
 static const int UPDATE_TIMER = 12;
+//the frames per second for the game
+static const int FPS = 60;
 
 //this stores how many ticks its been showing a player wins/loses message
 //used to time how long its going to be
@@ -48,8 +50,8 @@ int main() {;
     //Creates Window
     HWND hwnd = CreateWindowW(wc.lpszClassName, wc.lpszMenuName, WS_OVERLAPPEDWINDOW | WS_VISIBLE, screen.right / 2 - Pos::BASE_WIDTH / 2, screen.bottom / 2 - Pos::BASE_HEIGHT / 2, Pos::BASE_WIDTH, Pos::BASE_HEIGHT, nullptr, nullptr, wc.hInstance, nullptr);
 
-    //Set a timer to redraw every 33 ms (30 fps) to handle the player moving
-    SetTimer(hwnd, UPDATE_TIMER, 33, (TIMERPROC)NULL);
+    //Set a timer to redraw every 16 ms (60 fps) to handle the player moving
+    SetTimer(hwnd, UPDATE_TIMER, 1000 / FPS, (TIMERPROC)NULL);
 
     MSG msg = { nullptr };
 
@@ -73,7 +75,7 @@ LRESULT CALLBACK windowProcedure(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lpar
         case WM_TIMER:
         {
             switch (wparam) {
-                //happens every 33 ms
+                //happens every 16 ms
                 case UPDATE_TIMER:
                 {
                     //update the round
