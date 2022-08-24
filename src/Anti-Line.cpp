@@ -130,6 +130,8 @@ LRESULT CALLBACK windowProcedure(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lpar
 
             //make graphics
             Gdiplus::Graphics graphics(memDC);
+            //adds anti-aliasing to make the line look smoother
+            graphics.SetSmoothingMode(Gdiplus::SmoothingMode::SmoothingModeAntiAlias);
 
             //only draw game objects if in a round
             if (Game::getInstance().inRound) {
