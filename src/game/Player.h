@@ -8,7 +8,7 @@ class Player : public IPaintable, public ITickable {
 private:
 	//holds the alpha and rgb for the player color
 	//the way it works is by generating a random RGB value which is between 0 and 16777216 (FFFFFF in hex)
-	//then it uses "| 0xFF000000" to set the alpha of it to max because argb holds alpha first
+	//then it uses the bit mask "| 0xFF000000" to set the alpha of it to max because argb holds alpha first
 	int argb = Util::random(0, 0xFFFFFF) | 0xFF000000;
 	//used for movement in both axes respectively
 	double xAxisAcceleration = 0, xAxisVelocity = 0, yAxisAcceleration = 0, yAxisVelocity = 0;
@@ -24,11 +24,11 @@ public:
 	void moveUp();
 	void moveDown();
 	void moveLeft();
-	void moveRight();
+	void moveRight();	
 
 	//overriden from ITickable.h
 	void update() override;
 	//overriden from Paintable.h
-	Gdiplus::Color getColor() const override;
+	void draw(Gdiplus::Graphics& g) const override;
 };
 

@@ -1,10 +1,13 @@
 #pragma once
 #include "Round.h"
 #include "../ITickable.h"
+#include "../IPaintable.h"
 #include "RoundStatus.h"
-class Game : public ITickable{
+//Used for storing the game instance
+//Also a bridge class between the game internals and the UI
+class Game{
 private:
-	//we don't need to initalize anything
+	//we don't need a public constructor because this is a SINGLETON
 	Game() {};
 public:
 	Round currentRound;
@@ -15,9 +18,11 @@ public:
 
 	//this class is a singleton
 	static Game& getInstance();
+	//these 2 methods create a new round
 	void win();
 	void lose();
-	void update() override;
+	//dispatches update to the round
+	void update();
 	void displayRound();
 	//don't implement these two or else we might get multiple copies
 	Game(Game const&) = delete;

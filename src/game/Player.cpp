@@ -1,7 +1,6 @@
 #include "Player.h"
 
-Player::Player() : pos(0,0,SIDE_LENGTH, SIDE_LENGTH) {
-}
+Player::Player() : pos(0,0,SIDE_LENGTH, SIDE_LENGTH) {}
 
 //when moving up we need to lower the velocity
 void Player::moveUp() {
@@ -99,8 +98,11 @@ void Player::update() {
 	
 }
 
-Gdiplus::Color Player::getColor() const {
-	return Gdiplus::Color(argb);
+void Player::draw(Gdiplus::Graphics& g) const {
+	Gdiplus::SolidBrush playerBrush(argb);
+	g.FillRectangle(&playerBrush, pos.scaledX, pos.scaledY,
+						   pos.scaledWidth, pos.scaledHeight);
+
 }
 
 

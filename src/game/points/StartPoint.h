@@ -6,6 +6,6 @@ class StartPoint : public Point {
 public:
 	StartPoint();
 
-	Gdiplus::Color getColor() const override;
+	void draw(Gdiplus::Graphics& g) const override;
 };
 

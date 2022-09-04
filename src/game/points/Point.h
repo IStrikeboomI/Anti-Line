@@ -10,6 +10,6 @@ public:
 
 	Point(int x,int y) : pos(x,y,SIDE_LENGTH,SIDE_LENGTH) {};
 
-	virtual void onPlayerCollide(Player p) {};
-	virtual Gdiplus::Color getColor() const override = 0;
+	virtual void onPlayerCollide(Player& p) {};
+	virtual void draw(Gdiplus::Graphics& g) const override = 0;
 };

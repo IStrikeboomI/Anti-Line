@@ -14,10 +14,8 @@ static const int FPS = 60;
 static int fadeTime = 0;
 
 LRESULT CALLBACK windowProcedure(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam);
-//These methods are used for drawing separate objects to not clutter the WM_PAINT call
+//TODO move these to separate class
 inline void drawScoreString(Gdiplus::Graphics& graphics);
-inline void drawStartAndEndPoints(Gdiplus::Graphics& graphics);
-inline void drawPlayer(Gdiplus::Graphics& graphics);
 inline void drawLines(Gdiplus::Graphics& graphics);
 inline void drawWinText(Gdiplus::Graphics& graphics,int opacity);
 inline void drawLostText(Gdiplus::Graphics& graphics, int opacity);
@@ -27,6 +25,9 @@ int main() {;
     Gdiplus::GdiplusStartupInput gdiplusStartupInput;
     ULONG_PTR gdiplusToken;
     Gdiplus::GdiplusStartup(&gdiplusToken, &gdiplusStartupInput, NULL);
+
+    //initalize game using RAII
+    Game::getInstance();
 
 	//initizalie wc
 	WNDCLASSW wc = { 0 };
@@ -135,8 +136,9 @@ LRESULT CALLBACK windowProcedure(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lpar
 
             //only draw game objects if in a round
             if (Game::getInstance().inRound) {
-                drawStartAndEndPoints(graphics);
-                drawPlayer(graphics);
+                for (std::reference_wrapper<IPaintable>& p : Game::getInstance().currentRound.paintableObjects) {
+                    p.get().draw(graphics);
+                }
                 drawScoreString(graphics);
                 drawLines(graphics);
             } else {
@@ -201,31 +203,8 @@ inline void drawScoreString(Gdiplus::Graphics& graphics) {
     graphics.DrawString(scoreString.c_str(), -1, &font, Gdiplus::PointF(0, 0), &scoreBrush);
 }
 
-inline void drawStartAndEndPoints(Gdiplus::Graphics& graphics) {
-    Gdiplus::SolidBrush startingPointBrush(Game::getInstance().currentRound.startPoint.getColor());
-    graphics.FillRectangle(&startingPointBrush, Game::getInstance().currentRound.startPoint.pos.scaledX, Game::getInstance().currentRound.startPoint.pos.scaledY, 
-                                                Game::getInstance().currentRound.startPoint.pos.scaledWidth, Game::getInstance().currentRound.startPoint.pos.scaledHeight);
-
-    Gdiplus::SolidBrush endingPointBrush(Game::getInstance().currentRound.endPoint.getColor());
-    graphics.FillRectangle(&endingPointBrush, Game::getInstance().currentRound.endPoint.pos.scaledX, Game::getInstance().currentRound.endPoint.pos.scaledY,
-                                              Game::getInstance().currentRound.endPoint.pos.scaledWidth, Game::getInstance().currentRound.endPoint.pos.scaledHeight);
-}
-
-inline void drawPlayer(Gdiplus::Graphics& graphics) {
-    Gdiplus::SolidBrush playerBrush(Game::getInstance().currentRound.player.getColor());
-    graphics.FillRectangle(&playerBrush, Game::getInstance().currentRound.player.pos.scaledX, Game::getInstance().currentRound.player.pos.scaledY,
-                                         Game::getInstance().currentRound.player.pos.scaledWidth, Game::getInstance().currentRound.player.pos.scaledHeight);
-    
-}
 
 inline void drawLines(Gdiplus::Graphics& graphics) {
-    //all lines have the same color so just the first line
-    Gdiplus::Pen linePen(Game::getInstance().currentRound.lines.at(0)->getColor());
-
-    for (const std::shared_ptr<Line> l : Game::getInstance().currentRound.lines) {
-        graphics.DrawLine(&linePen, l->startPos.scaledX, l->startPos.scaledY, l->endPos.scaledX, l->endPos.scaledY);
-    }
-
     //DON'T FORGET TO REMOVE THIS (USED FOR DEBUGGING)
     Gdiplus::Pen testPen(Gdiplus::Color(89, 14, 98),5);
     graphics.DrawRectangle(&testPen, Game::getInstance().currentRound.endPoint.pos.scaledX + Game::getInstance().currentRound.endPoint.pos.scaledWidth/2, Game::getInstance().currentRound.endPoint.pos.scaledY + Game::getInstance().currentRound.endPoint.pos.scaledHeight/2, 10, 10);

@@ -4,6 +4,11 @@ StartPoint::StartPoint() : Point(Util::random(SIDE_LENGTH, SIDE_LENGTH + 50), Ut
 	
 }
 
-Gdiplus::Color StartPoint::getColor() const {
-	return Gdiplus::Color::Lime;
+void StartPoint::draw(Gdiplus::Graphics& g) const {
+	Gdiplus::SolidBrush startingPointBrush(Gdiplus::Color::Lime);
+	g.FillRectangle(&startingPointBrush, pos.scaledX, pos.scaledY,
+						   pos.scaledWidth, pos.scaledHeight);
+
 }
+
+

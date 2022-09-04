@@ -5,10 +5,12 @@ EndPoint::EndPoint() : Point(Util::random(SIDE_LENGTH + 730, SIDE_LENGTH + 820),
 
 }
 
-void EndPoint::onPlayerCollide(Player p) {
+void EndPoint::onPlayerCollide(Player& p) {
 	Game::getInstance().win();
 }
 
-Gdiplus::Color EndPoint::getColor() const {
-	return Gdiplus::Color::Red;
+void EndPoint::draw(Gdiplus::Graphics& g) const {
+	Gdiplus::SolidBrush endingPointBrush(Gdiplus::Color::Red);
+	g.FillRectangle(&endingPointBrush, pos.scaledX, pos.scaledY,
+						   pos.scaledWidth, pos.scaledHeight);
 }

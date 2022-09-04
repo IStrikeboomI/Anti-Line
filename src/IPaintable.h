@@ -4,5 +4,6 @@
 
 //an interface used for objects with color
 class IPaintable {
-	virtual Gdiplus::Color getColor() const = 0;
+public:
+	virtual void draw(Gdiplus::Graphics& g) const = 0;
 };
