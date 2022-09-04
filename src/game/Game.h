@@ -11,7 +11,7 @@ private:
 	Game() {};
 public:
 	Round currentRound;
-	int score = 0;
+	unsigned int score = 0;
 	bool AIMode = false;
 	bool inRound = true;
 	RoundStatus status = RoundStatus::ONGOING;
