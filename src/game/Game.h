@@ -5,7 +5,7 @@
 #include "RoundStatus.h"
 //Used for storing the game instance
 //Also a bridge class between the game internals and the UI
-class Game{
+class Game : public ITickable{
 private:
 	//we don't need a public constructor because this is a SINGLETON
 	Game() {};
@@ -22,7 +22,7 @@ public:
 	void win();
 	void lose();
 	//dispatches update to the round
-	void update();
+	void update() override;
 	void displayRound();
 	//don't implement these two or else we might get multiple copies
 	Game(Game const&) = delete;
