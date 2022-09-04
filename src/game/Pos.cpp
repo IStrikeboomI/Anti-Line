@@ -60,10 +60,10 @@ Pos::~Pos() {
 void Pos::setX(int x) {
 	//these two if statements make sure they're in bounds
 	if (x < 0) {
-		x = 0;
+		throw std::invalid_argument("x position should be above 0, got " + y);
 	}
 	if (x > BASE_WIDTH - width) {
-		x = BASE_WIDTH - width;
+		throw std::invalid_argument(std::string("x position should be below ").append("" + BASE_WIDTH - width).append(" ,got ").append("" + x));
 	}
 	this->x = x;
 	update();
@@ -72,10 +72,10 @@ void Pos::setX(int x) {
 void Pos::setY(int y) {
 	//these two if statements make sure they're in bounds
 	if (y < 0) {
-		y = 0;
+		throw std::invalid_argument("y position should be above 0, got " + y);
 	}
 	if (y > BASE_HEIGHT - height) {
-		y = BASE_HEIGHT - height;
+		throw std::invalid_argument(std::string("y position should be below ").append("" + BASE_HEIGHT - height).append(" ,got ").append("" + y));
 	}
 	this->y = y;
 	update();
