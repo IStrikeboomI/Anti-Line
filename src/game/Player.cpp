@@ -51,8 +51,8 @@ void Player::update() {
 	if (std::abs(yAxisVelocity) > 0) {
 		//using signum to account for the abs
 		yAxisVelocity -= Util::signum(yAxisVelocity) * ACCELERATION_INCREASE_AMOUNT / 4;
-		//due to floating point errors we need to round down to 0 when its below .1
-		if (std::abs(yAxisVelocity) <= 0.1) {
+		//due to floating point errors we need to round down to 0 when its below .15
+		if (std::abs(yAxisVelocity) <= 0.15) {
 			yAxisVelocity = 0;
 		}
 	}
@@ -86,11 +86,12 @@ void Player::update() {
 	if (std::abs(xAxisVelocity) > 0) {
 		//using signum to account for the abs
 		xAxisVelocity -= Util::signum(xAxisVelocity) * ACCELERATION_INCREASE_AMOUNT / 4;
-		//due to floating point errors we need to round down to 0 when its below .1
-		if (std::abs(xAxisVelocity) <= 0.1) {
+		//due to floating point errors we need to round down to 0 when its below .15
+		if (std::abs(xAxisVelocity) <= 0.15) {
 			xAxisVelocity = 0;
 		}
-	}	
+	}
+
 	//set the position to add the velocity
 	if (xAxisVelocity != 0) {
 		pos.setX(pos.getX() + xAxisVelocity);
