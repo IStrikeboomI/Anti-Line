@@ -20,7 +20,7 @@ inline void drawLines(Gdiplus::Graphics& graphics);
 inline void drawWinText(Gdiplus::Graphics& graphics,int opacity);
 inline void drawLostText(Gdiplus::Graphics& graphics, int opacity);
 
-int main() {;
+int main() {
     //Initilzing Gdi+
     Gdiplus::GdiplusStartupInput gdiplusStartupInput;
     ULONG_PTR gdiplusToken;

@@ -9,14 +9,14 @@ void Game::win() {
 	inRound = false;
 	status = RoundStatus::WON;
 	score++;
-	currentRound = Round{};
+	currentRound = std::move(Round{});
 }
 
 void Game::lose() {
 	inRound = false;
 	status = RoundStatus::LOST;
 	score = 0;
-	currentRound = Round{};
+	currentRound = std::move(Round{});
 }
 
 void Game::update() {
