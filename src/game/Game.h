@@ -25,7 +25,7 @@ public:
 	void update() override;
 	void displayRound();
 	//don't implement these two or else we might get multiple copies
-	Game(Game const&) = delete;
-	void operator=(Game const&) = delete;
+	Game(const Game&) = delete;
+	void operator=(const Game&) = delete;
 };
 
