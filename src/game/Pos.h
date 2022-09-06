@@ -6,6 +6,8 @@
 //This class is used for positioning in the top left
 class Pos {
 private:
+	//stores instances of Pos that are added to the vector in the constructor
+	//used for getting all the objects to scale
 	static std::vector<Pos*> instances;
 	//used for scaling the dimensions
 	static int screenWidth, screenHeight;
@@ -36,7 +38,7 @@ public:
 	//used for removing all the Pos in the vector
 	//used during round changes
 	static void clearInstances();
-	//separate functions so we can update after setting
+	//separate functions so we can throw errors if something is wrong when it gets set
 	//sets real coordinates but also does scale
 	void setX(int x);
 	void setY(int Y);
@@ -57,7 +59,7 @@ public:
 	friend bool operator==(const Pos& pos1, const Pos& pos2);
 	friend bool operator!=(const Pos& pos1, const Pos& pos2);
 
-	//Note: these operator overloads DO NOT effect the height and width (it will only use the Pos1 if two Pos are provided)
+	//Note: these operator overloads DOES NOT effect the height and width (it will only use the Pos1 if two Pos are provided)
 	//Adds 2 positions together
 	friend Pos operator+(const Pos& pos1, const Pos& pos2);
 	//Subtracts 2 positions together

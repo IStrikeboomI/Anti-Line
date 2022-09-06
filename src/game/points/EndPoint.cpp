@@ -1,6 +1,7 @@
 #include "EndPoint.h"
 #include "../Game.h"
 class Game;
+//generate somewhere on the right side
 EndPoint::EndPoint() : Point(Util::random(SIDE_LENGTH + 730, SIDE_LENGTH + 820), Util::random(SIDE_LENGTH, 540 - SIDE_LENGTH)) {
 
 }

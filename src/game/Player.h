@@ -26,9 +26,9 @@ public:
 	void moveLeft();
 	void moveRight();	
 
-	//overriden from ITickable.h
+	//the player doesn't just move staticly, it insteads slips around like ice
+	//the 4 functions above add velocity and acceleration but this method handles them to move the character
 	void update() override;
-	//overriden from Paintable.h
 	void draw(Gdiplus::Graphics& g) const override;
 };
 

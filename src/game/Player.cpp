@@ -23,7 +23,6 @@ void Player::moveRight() {
 	xAxisVelocity += xAxisAcceleration;
 }
 
-//called every tick
 //used for movement, both X and Y axis are the same thing, just different variables
 void Player::update() {
 	//since acceleration gets added every time we move, we need to cap it
