@@ -1,6 +1,6 @@
 #include "PredeterminedPath.h"
 
-
+//first generates a line that's straight out and then slowly moves to the end point with random angle variation
 PredeterminedPath::PredeterminedPath(const Pos& start, const Pos& end) {
 	//the start point of the line should be in the on the far east in the middle of the start point
 	const int X_START = start.getX() + start.getWidth();
