@@ -5,6 +5,7 @@
 #include "../ITickable.h"
 #include "Line.h"
 #include "PredeterminedPath.h"
+#include "Stopwatch.h"
 #include <vector>
 //Each indiviual round will be stored using this class
 class Round : public ITickable {
@@ -16,6 +17,7 @@ public:
 	EndPoint endPoint;
 	Player player;
 	PredeterminedPath path;
+	Stopwatch stopwatch;
 	std::vector<std::shared_ptr<Line>> lines;
 
 	Round();

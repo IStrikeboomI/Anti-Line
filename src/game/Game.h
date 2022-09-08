@@ -10,6 +10,9 @@ private:
 	//we don't need a public constructor because this is a SINGLETON
 	Game() {};
 public:
+	//default FPS for game
+	constexpr static int FPS = 60;
+
 	Round currentRound;
 	unsigned int score = 0;
 	bool AIMode = false;

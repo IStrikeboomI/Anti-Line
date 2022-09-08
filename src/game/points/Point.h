@@ -8,7 +8,7 @@ public:
 	const static int SIDE_LENGTH = 50;
 	Pos pos;
 
-	Point(int x,int y) : pos(x,y,SIDE_LENGTH,SIDE_LENGTH) {};
+	Point(int x, int y) : pos(x, y, SIDE_LENGTH, SIDE_LENGTH) {};
 
 	virtual void onPlayerCollide(Player& p) {};
 	virtual void draw(Gdiplus::Graphics& g) const override = 0;

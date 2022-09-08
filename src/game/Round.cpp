@@ -73,6 +73,7 @@ void Round::registerPaintables() {
 	paintableObjects.push_back(startPoint);
 	paintableObjects.push_back(endPoint);
 	paintableObjects.push_back(player);
+	paintableObjects.push_back(stopwatch);
 	for (std::shared_ptr<Line>& l : lines) {
 		paintableObjects.push_back(*l);
 	}
@@ -80,6 +81,7 @@ void Round::registerPaintables() {
 
 void Round::registerTickables() {
 	tickableObjects.push_back(player);
+	tickableObjects.push_back(stopwatch);
 }
 
 
