@@ -57,7 +57,15 @@ void Player::update() {
 	}
 	//set the position to add the velocity
 	if (yAxisVelocity != 0) {
-		pos.setY(pos.getY() + yAxisVelocity);
+		int newY = pos.getY() + yAxisVelocity;
+		//clamp variables so player doesn't go out of bounds
+		if (newY <= 0) {
+			pos.setY(0);
+		} else if (newY >= Pos::BASE_HEIGHT - pos.getHeight()) {
+			pos.setY(Pos::BASE_HEIGHT - pos.getHeight());
+		} else {
+			pos.setY(newY);
+		}
 	}
 
 	//since acceleration gets added every time we move, we need to cap it
@@ -93,7 +101,15 @@ void Player::update() {
 
 	//set the position to add the velocity
 	if (xAxisVelocity != 0) {
-		pos.setX(pos.getX() + xAxisVelocity);
+		int newX = pos.getX() + xAxisVelocity;
+		//clamp variables so player doesn't go out of bounds
+		if (newX <= 0) {
+			pos.setX(0);
+		} else if (newX >= Pos::BASE_WIDTH - pos.getWidth()) {
+			pos.setX(Pos::BASE_WIDTH - pos.getWidth());
+		} else {
+			pos.setX(newX);
+		}
 	}
 	
 }
