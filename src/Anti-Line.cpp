@@ -50,7 +50,7 @@ int main() {
     HWND hwnd = CreateWindowW(wc.lpszClassName, wc.lpszMenuName, WS_OVERLAPPEDWINDOW | WS_VISIBLE, screen.right / 2 - Pos::BASE_WIDTH / 2, screen.bottom / 2 - Pos::BASE_HEIGHT / 2, Pos::BASE_WIDTH, Pos::BASE_HEIGHT, nullptr, nullptr, wc.hInstance, nullptr);
 
     //Set a timer to redraw every 16 ms (60 fps) to handle the player moving
-    SetTimer(hwnd, UPDATE_TIMER, 1000 / Game::FPS, (TIMERPROC)NULL);
+    SetTimer(hwnd, UPDATE_TIMER, 1000 / Game::FPS, (TIMERPROC)nullptr);
 
     MSG msg = { nullptr };
 
