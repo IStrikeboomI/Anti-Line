@@ -19,10 +19,7 @@ void Pos::updateAll(int width, int height) {
 	}
 	//loop through each instance and scale the dimensions
 	for (Pos* p : instances) {
-		p->scaledX = p->x * scaleFactorX;
-		p->scaledY = p->y * scaleFactorY;
-		p->scaledWidth = p->width * scaleFactorX;
-		p->scaledHeight = p->height * scaleFactorY;
+		p->update();
 	}
 }
 

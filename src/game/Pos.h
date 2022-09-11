@@ -32,7 +32,7 @@ public:
 	//called when resizing the window
 	static void updateAll(int width, int height);
 	//called when the position changes using the set methods
-	void update();
+	inline void update();
 	//helper function used to scale font size
 	static double scaledFontSize(int size);
 	//used for removing all the Pos in the vector
