@@ -10,8 +10,6 @@ void Game::win() {
 	status = RoundStatus::WON;
 	//add 1 to the score
 	score++;
-	//we don't need to handle the pos from other rounds
-	Pos::clearInstances();
 	currentRound = std::move(Round{});
 }
 
@@ -20,8 +18,6 @@ void Game::lose() {
 	status = RoundStatus::LOST;
 	//reset score on loss;
 	score = 0;
-	//we don't need to handle the pos from other rounds
-	Pos::clearInstances();
 	currentRound = std::move(Round{});
 }
 
