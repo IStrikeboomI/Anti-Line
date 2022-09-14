@@ -13,7 +13,6 @@ static int fadeTime = 0;
 
 LRESULT CALLBACK windowProcedure(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam);
 //TODO move these to separate class
-inline void drawScoreString(Gdiplus::Graphics& graphics);
 inline void drawLines(Gdiplus::Graphics& graphics);
 inline void drawWinText(Gdiplus::Graphics& graphics,int opacity);
 inline void drawLostText(Gdiplus::Graphics& graphics, int opacity);
@@ -137,7 +136,6 @@ LRESULT CALLBACK windowProcedure(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lpar
                 for (std::reference_wrapper<IPaintable>& p : Game::getInstance().currentRound.paintableObjects) {
                     p.get().draw(graphics);
                 }
-                drawScoreString(graphics);
                 drawLines(graphics);
             } else {
                 // draw corrosponding message on the round status
@@ -191,16 +189,6 @@ LRESULT CALLBACK windowProcedure(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lpar
     }
     return DefWindowProcW(hwnd, msg, wparam, lparam);
 }
-
-inline void drawScoreString(Gdiplus::Graphics& graphics) {
-    std::wstring scoreString(L"Score: ");
-    scoreString += std::to_wstring(Game::getInstance().score);
-    Gdiplus::Font font(L"Arial", Pos::scaledFontSize(48));
-    Gdiplus::SolidBrush scoreBrush(Gdiplus::Color(132, 135, 135));
-
-    graphics.DrawString(scoreString.c_str(), -1, &font, Gdiplus::PointF(0, 0), &scoreBrush);
-}
-
 
 inline void drawLines(Gdiplus::Graphics& graphics) {
     //DON'T FORGET TO REMOVE THIS (USED FOR DEBUGGING)

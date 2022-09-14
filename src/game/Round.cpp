@@ -74,6 +74,7 @@ void Round::registerPaintables() {
 	paintableObjects.push_back(endPoint);
 	paintableObjects.push_back(player);
 	paintableObjects.push_back(stopwatch);
+	paintableObjects.push_back(scoreText);
 	for (std::shared_ptr<Line>& l : lines) {
 		paintableObjects.push_back(*l);
 	}

@@ -6,6 +6,7 @@
 #include "Line.h"
 #include "PredeterminedPath.h"
 #include "Stopwatch.h"
+#include "ScoreText.h"
 #include <vector>
 //Each indiviual round will be stored using this class
 class Round : public ITickable {
@@ -18,6 +19,7 @@ public:
 	Player player;
 	PredeterminedPath path;
 	Stopwatch stopwatch;
+	ScoreText scoreText;
 	std::vector<std::shared_ptr<Line>> lines;
 
 	Round();
