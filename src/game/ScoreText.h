@@ -1,6 +1,6 @@
 #pragma once
-#include "../IPaintable.h"
-class ScoreText : public IPaintable{
+#include "../Paintable.h"
+class ScoreText : public Paintable{
 public:
 	ScoreText();
 

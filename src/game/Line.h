@@ -1,7 +1,7 @@
 #pragma once
 #include "Pos.h"
-#include "../IPaintable.h"
-class Line : public IPaintable {
+#include "../Paintable.h"
+class Line : public Paintable {
 public:
 	Pos startPos;
 	Pos endPos;

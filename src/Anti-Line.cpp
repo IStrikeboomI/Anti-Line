@@ -131,23 +131,23 @@ LRESULT CALLBACK windowProcedure(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lpar
             //adds anti-aliasing to make the line look smoother
             graphics.SetSmoothingMode(Gdiplus::SmoothingMode::SmoothingModeAntiAlias);
 
-            //only draw game objects if in a round
-            if (Game::getInstance().inRound) {
-                for (std::reference_wrapper<IPaintable>& p : Game::getInstance().currentRound.paintableObjects) {
-                    p.get().draw(graphics);
-                }
-                drawLines(graphics);
-            } else {
-                // draw corrosponding message on the round status
-                if (Game::getInstance().status == RoundStatus::WON) {
-                    drawWinText(graphics, fadeTime * 4);
-                } else if (Game::getInstance().status == RoundStatus::LOST) {
-                    drawLostText(graphics, fadeTime * 4);
-                }
-                if (fadeTime == 2000 / 33) {
-                    Game::getInstance().displayRound();
+            for (std::reference_wrapper<Paintable>& p : Game::getInstance().currentRound.paintableObjects) {
+                Paintable& paintable = p.get();
+                if (paintable.canDraw()) {
+                    paintable.draw(graphics);
                 }
             }
+            //TODO move this to a separate class
+            drawLines(graphics);
+            if (Game::getInstance().status == RoundStatus::WON) {
+                drawWinText(graphics, fadeTime * 4);
+            } else if (Game::getInstance().status == RoundStatus::LOST) {
+                drawLostText(graphics, fadeTime * 4);
+            }
+            if (fadeTime == 2000 / 33) {
+                Game::getInstance().displayRound();
+            }
+           
 
             //paint on window
             BitBlt(hdc, 0, 0, width, height, memDC, 0, 0, SRCCOPY);

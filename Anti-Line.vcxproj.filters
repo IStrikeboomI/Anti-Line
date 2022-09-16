@@ -48,6 +48,9 @@
     <ClCompile Include="src\game\ScoreText.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Paintable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\game\points\StartPoint.h">
@@ -68,7 +71,7 @@
     <ClInclude Include="src\game\Player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\IPaintable.h">
+    <ClInclude Include="src\Paintable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\ITickable.h">

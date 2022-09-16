@@ -156,6 +156,7 @@
     <ClCompile Include="src\Anti-Line.cpp" />
     <ClCompile Include="src\game\points\StartPoint.cpp" />
     <ClCompile Include="src\game\Stopwatch.cpp" />
+    <ClCompile Include="src\Paintable.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\game\ScoreText.h" />
@@ -169,7 +170,7 @@
     <ClInclude Include="src\game\Pos.h" />
     <ClInclude Include="src\game\points\StartPoint.h" />
     <ClInclude Include="src\game\RoundStatus.h" />
-    <ClInclude Include="src\IPaintable.h" />
+    <ClInclude Include="src\Paintable.h" />
     <ClInclude Include="src\ITickable.h" />
     <ClInclude Include="src\Util.h" />
     <ClInclude Include="src\game\Stopwatch.h" />

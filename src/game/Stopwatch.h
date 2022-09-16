@@ -1,10 +1,10 @@
 #pragma once
-#include "../IPaintable.h"
+#include "../Paintable.h"
 #include "../ITickable.h"
 #include <string>
 #include <sstream>
 #include <format>
-class Stopwatch : public IPaintable, public ITickable{
+class Stopwatch : public Paintable, public ITickable{
 private:
 	unsigned int elapsedTicks = 0;
 public:

@@ -11,7 +11,7 @@
 //Each indiviual round will be stored using this class
 class Round : public ITickable {
 public:
-	std::vector<std::reference_wrapper<IPaintable>> paintableObjects;
+	std::vector<std::reference_wrapper<Paintable>> paintableObjects;
 	std::vector<std::reference_wrapper<ITickable>> tickableObjects;
 
 	StartPoint startPoint;

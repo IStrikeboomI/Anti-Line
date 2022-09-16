@@ -1,7 +1,5 @@
 #pragma once
 #include "Round.h"
-#include "../ITickable.h"
-#include "../IPaintable.h"
 #include "RoundStatus.h"
 //Used for storing the game instance
 //Also a bridge class between the game internals and the UI

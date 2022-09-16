@@ -1,9 +1,9 @@
 #pragma once
 #include "../Pos.h"
 #include "../Player.h"
-#include "../../IPaintable.h"
+#include "../../Paintable.h"
 
-class Point : public IPaintable {
+class Point : public Paintable {
 public:
 	const static int SIDE_LENGTH = 50;
 	Pos pos;
