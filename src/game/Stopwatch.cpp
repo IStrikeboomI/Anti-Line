@@ -19,5 +19,8 @@ void Stopwatch::draw(Gdiplus::Graphics& g) const {
 }
 
 void Stopwatch::update() {
-	elapsedTicks++;
+	//only update counter if in round/can draw
+	if (canDraw()) {
+		elapsedTicks++;
+	}
 }
