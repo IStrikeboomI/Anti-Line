@@ -131,7 +131,7 @@ LRESULT CALLBACK windowProcedure(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lpar
             //adds anti-aliasing to make the line look smoother
             graphics.SetSmoothingMode(Gdiplus::SmoothingMode::SmoothingModeAntiAlias);
 
-            for (std::reference_wrapper<Paintable>& p : Game::getInstance().currentRound.paintableObjects) {
+            for (std::reference_wrapper<Paintable>& p : Game::getInstance().paintableObjects) {
                 Paintable& paintable = p.get();
                 if (paintable.canDraw()) {
                     paintable.draw(graphics);

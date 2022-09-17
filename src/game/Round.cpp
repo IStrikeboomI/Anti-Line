@@ -21,14 +21,9 @@ Round::Round() : path(startPoint.pos, endPoint.pos) {
 		lines.push_back(l);
 	}
 
-	registerPaintables();
-	registerTickables();
 }
 
 void Round::update() {
-	for (ITickable& t : tickableObjects) {
-		t.update();
-	}
 	
 	//TODO move everything below here to a separate collision handler class
 	//call the player collision functions if the player collides
@@ -53,36 +48,4 @@ void Round::update() {
 		}
 	}
 }
-
-Round& Round::operator=(const Round& r) {
-	startPoint = r.startPoint;
-	endPoint = r.endPoint;
-	player = r.player;
-	path = r.path;
-	lines = r.lines;
-	//because we have a vector of refernces, we can't copy them over or else they will be referring to the wrong objects
-	//instead we clear both vectors, then re add them to the vectors
-	paintableObjects.clear();
-	tickableObjects.clear();
-	registerPaintables();
-	registerTickables();
-	return *this;
-}
-
-void Round::registerPaintables() {
-	paintableObjects.push_back(startPoint);
-	paintableObjects.push_back(endPoint);
-	paintableObjects.push_back(player);
-	paintableObjects.push_back(stopwatch);
-	paintableObjects.push_back(scoreText);
-	for (std::shared_ptr<Line>& l : lines) {
-		paintableObjects.push_back(*l);
-	}
-}
-
-void Round::registerTickables() {
-	tickableObjects.push_back(player);
-	tickableObjects.push_back(stopwatch);
-}
-
 

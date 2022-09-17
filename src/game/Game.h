@@ -6,10 +6,13 @@
 class Game : public ITickable{
 private:
 	//we don't need a public constructor because this is a SINGLETON
-	Game() {};
+	Game();
 public:
 	//default FPS for game
 	constexpr static int FPS = 60;
+
+	std::vector<std::reference_wrapper<Paintable>> paintableObjects;
+	std::vector<std::reference_wrapper<ITickable>> tickableObjects;
 
 	Round currentRound;
 	unsigned int score = 0;
@@ -19,9 +22,14 @@ public:
 
 	//this class is a singleton
 	static Game& getInstance();
+	//registry methods for the two vectors above
+	void registerPaintables();
+	void registerTickables();
 	//these 2 methods create a new round
 	void win();
 	void lose();
+	//method to start a new round
+	void newRound(const RoundStatus& status);
 	//dispatches update to the round
 	void update() override;
 	void displayRound();

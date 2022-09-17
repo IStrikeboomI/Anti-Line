@@ -11,9 +11,6 @@
 //Each indiviual round will be stored using this class
 class Round : public ITickable {
 public:
-	std::vector<std::reference_wrapper<Paintable>> paintableObjects;
-	std::vector<std::reference_wrapper<ITickable>> tickableObjects;
-
 	StartPoint startPoint;
 	EndPoint endPoint;
 	Player player;
@@ -24,12 +21,9 @@ public:
 
 	Round();
 	void update() override;
-	//registry methods for the two vectors above
-	void registerPaintables();
-	void registerTickables();
 	//we need to overload the assignment operator
 	//used when a new round starts
-	Round& operator=(const Round&);
+	Round& operator=(const Round&) = default;
 	//rule of three because of the above line
 	Round(const Round&) = default;
 	~Round() = default;
