@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <iostream>
 #include <stdexcept>
-//This class is used for positioning in the top left
+//This class is used for positioning and scaling when a window resize happens
 class Pos {
 private:
 	//stores instances of Pos that are added to the vector in the constructor

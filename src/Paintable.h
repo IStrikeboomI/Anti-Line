@@ -2,7 +2,7 @@
 #include <windows.h>
 #include <gdiplus.h>
 //a class used for objects that are drawn to the applciation
-//needs to be registered in the Round class
+//needs to be registered in the Game class
 class Paintable {
 public:
 	//this method should be used only for drawing and needs to be overriden

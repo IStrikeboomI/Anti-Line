@@ -4,6 +4,7 @@
 #include <string>
 #include <sstream>
 #include <format>
+//this show the total time elapsed in the format of M:SS.mm (m is milisecond)
 class Stopwatch : public Paintable, public ITickable{
 private:
 	unsigned int elapsedTicks = 0;

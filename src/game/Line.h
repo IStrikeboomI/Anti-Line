@@ -1,6 +1,7 @@
 #pragma once
 #include "Pos.h"
 #include "../Paintable.h"
+//this class represents all the lines the player can't touch or else they lose
 class Line : public Paintable {
 public:
 	Pos startPos;
