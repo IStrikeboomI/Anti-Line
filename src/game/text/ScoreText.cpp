@@ -1,5 +1,5 @@
 #include "ScoreText.h"
-#include "Game.h"
+#include "../Game.h"
 class Game;
 ScoreText::ScoreText() {
 }

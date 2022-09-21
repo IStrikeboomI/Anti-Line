@@ -145,7 +145,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\game\ScoreText.cpp" />
+    <ClCompile Include="src\game\text\ScoreText.cpp" />
     <ClCompile Include="src\game\Game.cpp" />
     <ClCompile Include="src\game\PredeterminedPath.cpp" />
     <ClCompile Include="src\game\Line.cpp" />
@@ -159,7 +159,7 @@
     <ClCompile Include="src\Paintable.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\game\ScoreText.h" />
+    <ClInclude Include="src\game\text\ScoreText.h" />
     <ClInclude Include="src\game\Game.h" />
     <ClInclude Include="src\game\points\Point.h" />
     <ClInclude Include="src\game\PredeterminedPath.h" />

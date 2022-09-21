@@ -6,7 +6,7 @@
 #include "Line.h"
 #include "PredeterminedPath.h"
 #include "Stopwatch.h"
-#include "ScoreText.h"
+#include "text/ScoreText.h"
 #include <vector>
 //Each indiviual round will be stored using this class
 class Round : public ITickable {

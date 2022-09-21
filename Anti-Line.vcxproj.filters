@@ -45,7 +45,7 @@
     <ClCompile Include="src\game\Stopwatch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\game\ScoreText.cpp">
+    <ClCompile Include="src\game\text\ScoreText.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Paintable.cpp">
@@ -95,7 +95,7 @@
     <ClInclude Include="src\game\Stopwatch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\game\ScoreText.h">
+    <ClInclude Include="src\game\text\ScoreText.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
