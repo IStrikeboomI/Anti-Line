@@ -18,7 +18,7 @@ private:
 	//this one should be used for moving around
 	int x = 0, y = 0, width = BASE_WIDTH, height = BASE_HEIGHT;
 public:
-	const static int BASE_WIDTH = 960, BASE_HEIGHT = 540;
+	constexpr static int BASE_WIDTH = 960, BASE_HEIGHT = 540;
 	//scaled version of the coordinates
 	//this one should be the one used for drawing
 	int scaledX = 0, scaledY = 0, scaledWidth = 0, scaledHeight = 0;

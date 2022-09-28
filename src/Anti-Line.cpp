@@ -5,7 +5,7 @@
 #include <iostream>
 
 //constant for timer's code
-static const int UPDATE_TIMER = 12;
+static constexpr int UPDATE_TIMER = 12;
 
 //this stores how many ticks its been showing a player wins/loses message
 //used to time how long its going to be

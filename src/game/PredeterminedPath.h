@@ -9,7 +9,7 @@
 class PredeterminedPath {
 private:
 	//this can also serve as the hyponetuese of the triangle created by the line
-	static const int LINE_LENGTH = 25;
+	static constexpr int LINE_LENGTH = 25;
 public:
 	std::vector<std::shared_ptr<Line>> lines;
 

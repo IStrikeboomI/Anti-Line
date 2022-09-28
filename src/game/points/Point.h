@@ -5,7 +5,7 @@
 
 class Point : public Paintable {
 public:
-	const static int SIDE_LENGTH = 50;
+	constexpr static int SIDE_LENGTH = 50;
 	Pos pos;
 
 	Point(int x, int y) : pos(x, y, SIDE_LENGTH, SIDE_LENGTH) {};

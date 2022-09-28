@@ -3,8 +3,8 @@
 //first generates a line that's straight out and then slowly moves to the end point with random angle variation
 PredeterminedPath::PredeterminedPath(const Pos& start, const Pos& end) {
 	//the start point of the line should be in the on the far east in the middle of the start point
-	const int X_START = start.getX() + start.getWidth();
 	const int Y_START = start.getY() + start.getHeight() / 2;
+	const int X_START = start.getX() + start.getWidth();
 
 	//these only apply for the first line
 	const double X_DISTANCE_TO_END = std::abs(end.getX() + end.getWidth() / 2 - X_START);
