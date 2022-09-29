@@ -7,15 +7,9 @@
 //constant for timer's code
 static constexpr int UPDATE_TIMER = 12;
 
-//this stores how many ticks its been showing a player wins/loses message
-//used to time how long its going to be
-static int fadeTime = 0;
-
 LRESULT CALLBACK windowProcedure(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam);
 //TODO move these to separate class
 inline void drawLines(Gdiplus::Graphics& graphics);
-inline void drawWinText(Gdiplus::Graphics& graphics,int opacity);
-inline void drawLostText(Gdiplus::Graphics& graphics, int opacity);
 
 int main() {
     //Initilzing Gdi+
@@ -78,11 +72,6 @@ LRESULT CALLBACK windowProcedure(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lpar
                 {
                     //update the round
                     Game::getInstance().update();
-                    if (!Game::getInstance().inRound) {
-                        fadeTime++;
-                    } else {
-                        fadeTime = 0;
-                    }
                     //redraw window
                     InvalidateRect(hwnd, nullptr, true);
                     break;
@@ -139,15 +128,6 @@ LRESULT CALLBACK windowProcedure(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lpar
             }
             //TODO move this to a separate class
             drawLines(graphics);
-            if (Game::getInstance().status == RoundStatus::WON) {
-                drawWinText(graphics, fadeTime * 4);
-            } else if (Game::getInstance().status == RoundStatus::LOST) {
-                drawLostText(graphics, fadeTime * 4);
-            }
-            if (fadeTime == 2000 / 33) {
-                Game::getInstance().displayRound();
-            }
-           
 
             //paint on window
             BitBlt(hdc, 0, 0, width, height, memDC, 0, 0, SRCCOPY);
@@ -198,33 +178,4 @@ inline void drawLines(Gdiplus::Graphics& graphics) {
         graphics.DrawLine(&testPen, l->startPos.scaledX, l->startPos.scaledY, l->endPos.scaledX, l->endPos.scaledY);
     
     }
-}
-
-inline void drawWinText(Gdiplus::Graphics& graphics, int opacity) {
-    //center x and y posistion but doesn't account for dimensions yet
-    Pos center(Pos::BASE_WIDTH/2,Pos::BASE_HEIGHT/2);
-    std::wstring winString(L"You Won!");
-    Gdiplus::Font font(L"Arial", Pos::scaledFontSize(108));
-    Gdiplus::SolidBrush winBrush(Gdiplus::Color(opacity, 84, 232, 88));
-
-    //this will measure how big the string will be so we can truly center it
-    Gdiplus::RectF rect;
-    graphics.MeasureString(winString.c_str(),-1,&font, Gdiplus::PointF(center.scaledX, center.scaledY),&rect);
-
-    graphics.DrawString(winString.c_str(), -1, &font, Gdiplus::PointF(Pos::BASE_WIDTH / 2 - rect.Width / 2, Pos::BASE_HEIGHT / 2 - rect.Height / 2), &winBrush);
-}
-
-inline void drawLostText(Gdiplus::Graphics& graphics, int opacity) {
-    //center x and y posistion but doesn't account for dimensions yet
-    Pos center(Pos::BASE_WIDTH / 2, Pos::BASE_HEIGHT / 2);
-    std::wstring lostString(L"You Lost!");
-    Gdiplus::Font font(L"Arial", Pos::scaledFontSize(108));
-    Gdiplus::SolidBrush lostBrush(Gdiplus::Color(opacity, 240, 58, 58));
-
-    //this will measure how big the string will be so we can truly center it
-    Gdiplus::RectF rect;
-    graphics.MeasureString(lostString.c_str(), -1, &font, Gdiplus::PointF(center.scaledX, center.scaledY), &rect);
-
-    graphics.DrawString(lostString.c_str(), -1, &font, Gdiplus::PointF(Pos::BASE_WIDTH / 2 - rect.Width / 2, Pos::BASE_HEIGHT / 2 - rect.Height / 2), &lostBrush);
-
 }

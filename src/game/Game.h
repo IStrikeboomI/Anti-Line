@@ -1,6 +1,8 @@
 #pragma once
 #include "Round.h"
 #include "RoundStatus.h"
+#include "text/LoseText.h"
+#include "text/WinText.h"
 //Used for storing the game instance (not the round)
 //Also a bridge class between the game internals and the UI
 class Game : public ITickable{
@@ -19,6 +21,9 @@ public:
 	bool AIMode = false;
 	bool inRound = true;
 	RoundStatus status = RoundStatus::ONGOING;
+
+	LoseText loseText;
+	WinText winText;
 
 	//this class is a singleton
 	static Game& getInstance();

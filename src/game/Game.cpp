@@ -18,12 +18,16 @@ void Game::registerPaintables() {
 	for (std::shared_ptr<Line>& l : currentRound.lines) {
 		paintableObjects.push_back(*l);
 	}
+	paintableObjects.push_back(loseText);
+	paintableObjects.push_back(winText);
 }
 
 void Game::registerTickables() {
 	tickableObjects.push_back(currentRound);
 	tickableObjects.push_back(currentRound.player);
 	tickableObjects.push_back(currentRound.stopwatch);
+	tickableObjects.push_back(loseText);
+	tickableObjects.push_back(winText);
 }
 
 void Game::win() {
