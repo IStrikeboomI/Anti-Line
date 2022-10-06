@@ -1,27 +1,5 @@
 #include "WinText.h"
-#include "../Game.h"
-class Game;
-WinText::WinText() :
-    //put text in the center
-    pos(Pos::BASE_WIDTH / 2, Pos::BASE_HEIGHT / 2) {
-}
-
-void WinText::update() {
-    //fade time only needs to update if it's visible
-    if (canDraw()) {
-        fadeTime++;
-        //after it's finished showing, display the new round
-        if (fadeTime >= DISPLAY_TIME) {
-            //reset fade timer because we don't destroy the object on new round
-            fadeTime = 0;
-            Game::getInstance().displayRound();
-        }
-    }
-}
-
-bool WinText::canDraw() {
-    return !Game::getInstance().inRound && Game::getInstance().status == RoundStatus::WON;
-}
+WinText::WinText() : EndText(RoundStatus::WON) {}
 
 void WinText::draw(Gdiplus::Graphics& g) const {
     std::wstring winString(L"You Won!");

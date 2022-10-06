@@ -1,18 +1,9 @@
 #pragma once
-#include "../../ITickable.h"
-#include "../../Paintable.h"
-#include "../Pos.h"
-class WinText : public ITickable, public Paintable {
-private:
-	Pos pos;
-	int fadeTime = 0;
+#include "EndText.h"
+class WinText : public EndText {
 public:
-	static constexpr int DISPLAY_TIME = 60;
 	WinText();
 
-	void update() override;
-	//we only want to draw when the game is not in round and a loss
-	bool canDraw() override;
 	void draw(Gdiplus::Graphics& g) const override;
 };
 
