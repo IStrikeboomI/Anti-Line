@@ -16,6 +16,15 @@ Round::Round() : path(startPoint.pos, endPoint.pos) {
 			int y1 = Util::random(0, 240);
 			int x2 = Util::random(130, 270) + x1;
 			int y2 = Util::random(240, 540 - 170) + y1;
+			//50% chance to swap variables around to add variety to the generated lines so they all don't generate in the same direction
+			bool swap = Util::random(0, 1) == 0;
+			if (swap) {
+				//use a xor swap
+				x1 = x1 ^ x2;
+				x2 = x1 ^ x2;
+				x1 = x1 ^ x2;
+				//don't swap y values or else the lines are the same as without the swap
+			}
 			l = std::make_shared<Line>(x1, y1, x2, y2);
 		} while (path.isLineNear(*l,10));
 		lines.push_back(l);
