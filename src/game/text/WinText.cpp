@@ -13,6 +13,6 @@ void WinText::draw(Gdiplus::Graphics& g) const {
     Gdiplus::RectF rect;
     g.MeasureString(winString.c_str(), -1, &font, Gdiplus::PointF(pos.scaledX, pos.scaledY), &rect);
 
-    g.DrawString(winString.c_str(), -1, &font, Gdiplus::PointF(Pos::BASE_WIDTH / 2 - rect.Width / 2, Pos::BASE_HEIGHT / 2 - rect.Height / 2), &lostBrush);
+    g.DrawString(winString.c_str(), -1, &font, Gdiplus::PointF(rect.X - rect.Width / 2, rect.Y - rect.Height / 2), &lostBrush);
 
 }
