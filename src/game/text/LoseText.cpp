@@ -14,5 +14,4 @@ void LoseText::draw(Gdiplus::Graphics& g) const {
     g.MeasureString(lostString.c_str(), -1, &font, Gdiplus::PointF(pos.scaledX, pos.scaledY), &rect);
 
     g.DrawString(lostString.c_str(), -1, &font, Gdiplus::PointF(rect.X - rect.Width / 2, rect.Y - rect.Height / 2), &lostBrush);
-
 }
