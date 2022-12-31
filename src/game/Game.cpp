@@ -30,6 +30,10 @@ void Game::registerTickables() {
 	tickableObjects.push_back(winText);
 }
 
+void Game::registerPlayerCollidables() {
+	playerCollidableObjects.push_back(currentRound.endPoint);
+}
+
 void Game::win() {
 	newRound(RoundStatus::WON);
 	//add 1 to the score

@@ -116,6 +116,9 @@
     <ClInclude Include="src\game\text\EndText.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\IPlayerCollidable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />

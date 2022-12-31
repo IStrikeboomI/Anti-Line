@@ -6,7 +6,7 @@ EndPoint::EndPoint() : Point(Util::random(SIDE_LENGTH + 730, SIDE_LENGTH + 820),
 
 }
 
-void EndPoint::onPlayerCollide(Player& p) {
+void EndPoint::onPlayerCollision(Player& p) {
 	Game::getInstance().win();
 }
 

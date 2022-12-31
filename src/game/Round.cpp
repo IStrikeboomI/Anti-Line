@@ -36,11 +36,8 @@ void Round::update() {
 	
 	//TODO move everything below here to a separate collision handler class
 	//call the player collision functions if the player collides
-	if (player.pos.isCollided(startPoint.pos)) {
-		startPoint.onPlayerCollide(player);
-	}
 	if (player.pos.isCollided(endPoint.pos)) {
-		endPoint.onPlayerCollide(player);
+		endPoint.onPlayerCollision(player);
 	}
 
 	//These 5 variables make 4 lines that represent the outline of the player's cube

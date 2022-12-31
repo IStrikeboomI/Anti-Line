@@ -15,6 +15,7 @@ public:
 
 	std::vector<std::reference_wrapper<Paintable>> paintableObjects;
 	std::vector<std::reference_wrapper<ITickable>> tickableObjects;
+	std::vector<std::reference_wrapper<IPlayerCollidable>> playerCollidableObjects;
 
 	Round currentRound;
 	unsigned int score = 0;
@@ -27,9 +28,10 @@ public:
 
 	//this class is a singleton
 	static Game& getInstance();
-	//registry methods for the two vectors above
+	//registry methods for the vectors above
 	void registerPaintables();
 	void registerTickables();
+	void registerPlayerCollidables();
 	//these 2 methods create a new round
 	void win();
 	void lose();

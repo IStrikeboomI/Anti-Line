@@ -176,6 +176,7 @@
     <ClInclude Include="src\game\Pos.h" />
     <ClInclude Include="src\game\points\StartPoint.h" />
     <ClInclude Include="src\game\RoundStatus.h" />
+    <ClInclude Include="src\IPlayerCollidable.h" />
     <ClInclude Include="src\Paintable.h" />
     <ClInclude Include="src\ITickable.h" />
     <ClInclude Include="src\Util.h" />
