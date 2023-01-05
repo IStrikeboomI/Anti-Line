@@ -4,6 +4,7 @@
 #include "Game.h"
 class Game;
 class GameObject {
+public:
 	//updates every tick (1 tick = 16ms)
 	virtual void update() {};
 
