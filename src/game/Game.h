@@ -29,7 +29,6 @@ public:
 	static Game& getInstance();
 	//registry method for the vector above
 	void registerObjects();
-	void registerObject(GameObject& g);
 	//these 2 methods create a new round
 	void win();
 	void lose();
