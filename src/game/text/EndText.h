@@ -1,11 +1,10 @@
 #pragma once
-#include "../../ITickable.h"
-#include "../../Paintable.h"
+#include "../GameObject.h"
 #include "../Pos.h"
 #include "../RoundStatus.h"
 //an abstract class used for the text shown when a round is beaten
 //inherited by LoseText and WinText
-class EndText : public ITickable, public Paintable {
+class EndText : public GameObject{
 protected:
 	Pos pos;
 	int fadeTime = 0;

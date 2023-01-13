@@ -1,5 +1,4 @@
 #include "Player.h"
-
 Player::Player() : pos(0, 0, SIDE_LENGTH, SIDE_LENGTH) {}
 
 //when moving up we need to lower the velocity

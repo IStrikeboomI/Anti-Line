@@ -1,10 +1,9 @@
 #pragma once
 #include "../Pos.h"
 #include "../Player.h"
-#include "../../Paintable.h"
-#include "../../IPlayerCollidable.h"
+#include "../GameObject.h"
 
-class Point : public Paintable, public IPlayerCollidable {
+class Point : public GameObject {
 public:
 	constexpr static int SIDE_LENGTH = 50;
 	Pos pos;

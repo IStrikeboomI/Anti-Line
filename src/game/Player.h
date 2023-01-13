@@ -1,10 +1,8 @@
 #pragma once
 #include "../Util.h"
 #include "Pos.h"
-#include "../Paintable.h"
-#include "../ITickable.h"
-#include "../Util.h"
-class Player : public Paintable, public ITickable {
+#include "GameObject.h"
+class Player : public GameObject {
 private:
 	//holds the alpha and rgb for the player color
 	//the way it works is by generating a random RGB value which is between 0 and 16777216 (FFFFFF in hex)

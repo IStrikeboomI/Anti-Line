@@ -146,6 +146,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\game\GameObject.cpp" />
     <ClCompile Include="src\game\text\EndText.cpp" />
     <ClCompile Include="src\game\text\LoseText.cpp" />
     <ClCompile Include="src\game\text\ScoreText.cpp" />

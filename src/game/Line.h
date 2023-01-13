@@ -1,8 +1,8 @@
 #pragma once
 #include "Pos.h"
-#include "../Paintable.h"
+#include "GameObject.h"
 //this class represents all the lines the player can't touch or else they lose
-class Line : public Paintable {
+class Line : public GameObject {
 public:
 	Pos startPos;
 	Pos endPos;

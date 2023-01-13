@@ -1,7 +1,7 @@
 #pragma once
-#include "../../Paintable.h"
+#include "../GameObject.h"
 //this class draws the total score in the corner
-class ScoreText : public Paintable{
+class ScoreText : public GameObject{
 public:
 	ScoreText();
 
