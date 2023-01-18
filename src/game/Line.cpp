@@ -1,5 +1,6 @@
 #include "Line.h"
-
+#include "Game.h"
+class Game;
 Line::Line(int x1, int y1, int x2, int y2) : startPos(x1,y1), endPos(x2, y2) {
 
 }
@@ -36,5 +37,24 @@ bool Line::doLinesIntersect(const Line& l) const {
     }
 
     return false;
+}
+
+void Line::onPlayerCollision(Player& p){
+    Game::getInstance().lose();
+}
+
+bool Line::isPlayerCollided(Player& p) {
+    //These 5 variables make 4 lines that represent the outline of the player's cube
+    const Pos PLAYER_POS = p.pos;
+    Line topX(PLAYER_POS.getX(), PLAYER_POS.getY(), PLAYER_POS.getX() + PLAYER_POS.getWidth(), PLAYER_POS.getY());
+    Line bottomX(PLAYER_POS.getX(), PLAYER_POS.getY() + PLAYER_POS.getHeight(), PLAYER_POS.getX() + PLAYER_POS.getWidth(), PLAYER_POS.getY() + PLAYER_POS.getHeight());
+    Line leftY(PLAYER_POS.getX(), PLAYER_POS.getY(), PLAYER_POS.getX(), PLAYER_POS.getY() + PLAYER_POS.getHeight());
+    Line rightY(PLAYER_POS.getX() + PLAYER_POS.getWidth(), PLAYER_POS.getY(), PLAYER_POS.getX() + PLAYER_POS.getWidth(), PLAYER_POS.getY() + PLAYER_POS.getHeight());
+    
+    //loop over all the lines and check if any of the player lines intersect and if they do, then the player is collided
+    return doLinesIntersect(topX) ||
+           doLinesIntersect(bottomX) ||
+           doLinesIntersect(leftY) ||
+           doLinesIntersect(rightY);
 }
 

@@ -33,25 +33,14 @@ Round::Round() : path(startPoint.pos, endPoint.pos) {
 }
 
 void Round::update() {
-	
-	//TODO move everything below here to a separate collision handler class
-	//call the player collision functions if the player collides
-	if (player.pos.isCollided(endPoint.pos)) {
-		endPoint.onPlayerCollision(player);
-	}
-
-	//These 5 variables make 4 lines that represent the outline of the player's cube
-	const Pos PLAYER_POS = player.pos;
-	Line topX(PLAYER_POS.getX(), PLAYER_POS.getY(), PLAYER_POS.getX() + PLAYER_POS.getWidth(), PLAYER_POS.getY());
-	Line bottomX(PLAYER_POS.getX(), PLAYER_POS.getY() + PLAYER_POS.getHeight(), PLAYER_POS.getX() + PLAYER_POS.getWidth(), PLAYER_POS.getY() + PLAYER_POS.getHeight());
-	Line leftY(PLAYER_POS.getX(), PLAYER_POS.getY(), PLAYER_POS.getX(), PLAYER_POS.getY() + PLAYER_POS.getHeight());
-	Line rightY(PLAYER_POS.getX() + PLAYER_POS.getWidth(), PLAYER_POS.getY(), PLAYER_POS.getX() + PLAYER_POS.getWidth(), PLAYER_POS.getY() + PLAYER_POS.getHeight());
-
-	//loop over all the lines and check if any of the player lines intersect and if they do, LOSE
-	for (const std::shared_ptr<Line>& l : lines) {
-		if (l->doLinesIntersect(topX) || l->doLinesIntersect(bottomX) || l->doLinesIntersect(leftY) || l->doLinesIntersect(rightY) ) {
-			Game::getInstance().lose();
-		}
-	}
+	 for (GameObject& g: Game::getInstance().gameObjects) {
+	 //for (int i = 0; i < Game::getInstance().gameObjects.size();i++) {
+	 //	GameObject& g = Game::getInstance().gameObjects.at(i);
+	 //	std::cout << i << "\n";
+	 	g.update();
+	 	if (g.isPlayerCollided(player)) {
+	 		g.onPlayerCollision(player);
+	 	}
+	 }
 }
 

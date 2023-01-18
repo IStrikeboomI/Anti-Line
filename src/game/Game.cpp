@@ -15,11 +15,11 @@ void Game::registerObjects() {
 	gameObjects.push_back(currentRound.player);
 	gameObjects.push_back(currentRound.stopwatch);
 	gameObjects.push_back(currentRound.scoreText);
+	gameObjects.push_back(loseText);
+	gameObjects.push_back(winText);
 	for (std::shared_ptr<Line>& l : currentRound.lines) {
 		gameObjects.push_back(*l);
 	}
-	gameObjects.push_back(loseText);
-	gameObjects.push_back(winText);
 }
 
 void Game::win() {
@@ -45,9 +45,8 @@ void Game::newRound(const RoundStatus& status) {
 }
 
 void Game::update() {
-	for (GameObject& g : gameObjects) {
-		g.update();
-	}
+	//defer to round for updating
+	currentRound.update();
 }
 
 void Game::displayRound() {

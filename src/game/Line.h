@@ -11,5 +11,7 @@ public:
 	void draw(Gdiplus::Graphics& g) const override;
 	//used for chekcing if two lines intersect
 	bool doLinesIntersect(const Line& l) const;
+	virtual void onPlayerCollision(Player& p) override;
+	virtual bool isPlayerCollided(Player& p) override;
 };
 

@@ -1,4 +1,5 @@
 #pragma once
+#include <set>
 #include "Round.h"
 #include "RoundStatus.h"
 #include "text/LoseText.h"

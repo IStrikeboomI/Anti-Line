@@ -10,6 +10,7 @@ public:
 
 	Point(int x, int y) : pos(x, y, SIDE_LENGTH, SIDE_LENGTH) {};
 
-	virtual void onPlayerCollision(Player& p) {};
+	virtual void onPlayerCollision(Player& p) override {};
+	virtual bool isPlayerCollided(Player& p) override { return pos.isCollided(p.pos); };
 	virtual void draw(Gdiplus::Graphics& g) const override = 0;
 };
