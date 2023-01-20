@@ -33,14 +33,13 @@ Round::Round() : path(startPoint.pos, endPoint.pos) {
 }
 
 void Round::update() {
-	 for (GameObject& g: Game::getInstance().gameObjects) {
-	 //for (int i = 0; i < Game::getInstance().gameObjects.size();i++) {
-	 //	GameObject& g = Game::getInstance().gameObjects.at(i);
-	 //	std::cout << i << "\n";
-	 	g.update();
-	 	if (g.isPlayerCollided(player)) {
-	 		g.onPlayerCollision(player);
-	 	}
-	 }
+	//update and check if player has collided for all game objects
+	for (int i = 0; i < Game::getInstance().gameObjects.size();i++) {
+		GameObject& g = Game::getInstance().gameObjects.at(i);
+		g.update();
+		if (g.isPlayerCollided(player)) {
+			g.onPlayerCollision(player);
+		}
+	}
 }
 

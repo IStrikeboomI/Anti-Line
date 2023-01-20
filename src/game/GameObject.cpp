@@ -1,6 +1,5 @@
 #include "GameObject.h"
 #include "Game.h"
-bool GameObject::canDraw()
-{
+bool GameObject::canDraw() {
     return Game::getInstance().inRound;
 }
