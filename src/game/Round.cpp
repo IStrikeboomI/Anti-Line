@@ -13,9 +13,9 @@ Round::Round() : path(startPoint.pos, endPoint.pos) {
 		//keep making new lines if the line is near the path
 		do {
 			int x1 = Util::random(140, 500);
-			int y1 = Util::random(0, 240);
+			int y1 = Util::random(0, 540);
 			int x2 = Util::random(130, 270) + x1;
-			int y2 = Util::random(240, 540 - 170) + y1;
+			int y2 = Util::random(0, 540 - y1) + y1;
 			//50% chance to swap variables around to add variety to the generated lines so they all don't generate in the same direction
 			bool swap = Util::random(0, 1) == 0;
 			if (swap) {
@@ -26,7 +26,7 @@ Round::Round() : path(startPoint.pos, endPoint.pos) {
 				//don't swap y values or else the lines are the same as without the swap
 			}
 			l = std::make_shared<Line>(x1, y1, x2, y2);
-		} while (path.isLineNear(*l,10));
+		} while (path.isLineNear(*l,30));
 		lines.push_back(l);
 	}
 
