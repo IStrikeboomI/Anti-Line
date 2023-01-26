@@ -8,8 +8,6 @@
 static constexpr int UPDATE_TIMER = 12;
 
 LRESULT CALLBACK windowProcedure(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam);
-//TODO move these to separate class
-inline void drawLines(Gdiplus::Graphics& graphics);
 
 int main() {
     //Initilzing Gdi+
@@ -125,8 +123,6 @@ LRESULT CALLBACK windowProcedure(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lpar
                     g.get().draw(graphics);
                 }
             }
-            //TODO move this to a separate class
-            drawLines(graphics);
 
             //paint on window
             BitBlt(hdc, 0, 0, width, height, memDC, 0, 0, SRCCOPY);
@@ -167,14 +163,4 @@ LRESULT CALLBACK windowProcedure(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lpar
         default:break;
     }
     return DefWindowProcW(hwnd, msg, wparam, lparam);
-}
-
-inline void drawLines(Gdiplus::Graphics& graphics) {
-    //DON'T FORGET TO REMOVE THIS (USED FOR DEBUGGING)
-    Gdiplus::Pen testPen(Gdiplus::Color(89, 14, 98),5);
-    graphics.DrawRectangle(&testPen, Game::getInstance().currentRound.endPoint.pos.scaledX + Game::getInstance().currentRound.endPoint.pos.scaledWidth/2, Game::getInstance().currentRound.endPoint.pos.scaledY + Game::getInstance().currentRound.endPoint.pos.scaledHeight/2, 10, 10);
-    for (const std::shared_ptr<Line> l : Game::getInstance().currentRound.path.lines) {
-        graphics.DrawLine(&testPen, l->startPos.scaledX, l->startPos.scaledY, l->endPos.scaledX, l->endPos.scaledY);
-    
-    }
 }
