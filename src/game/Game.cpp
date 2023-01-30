@@ -26,6 +26,7 @@ void Game::win() {
 	newRound(RoundStatus::WON);
 	//add 1 to the score
 	score++;
+	highscore = max(score, highscore);
 }
 
 void Game::lose() {

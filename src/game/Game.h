@@ -1,5 +1,4 @@
 #pragma once
-#include <set>
 #include "Round.h"
 #include "RoundStatus.h"
 #include "text/LoseText.h"
@@ -18,7 +17,7 @@ public:
 	std::vector<std::reference_wrapper<GameObject>> gameObjects;
 
 	Round currentRound;
-	unsigned int score = 0;
+	unsigned int score = 0, highscore = 0;
 	bool AIMode = false;
 	bool inRound = true;
 	RoundStatus status = RoundStatus::ONGOING;
